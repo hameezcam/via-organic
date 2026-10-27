@@ -85,7 +85,7 @@ export default function Faq() {
                 Have a specific question about your villa plot?
               </p>
               <p className="text-xs text-charcoal-muted">
-                Our senior agronomist answers queries directly on WhatsApp within 30 minutes.
+                Message our team directly on WhatsApp and we will get back to you.
               </p>
             </div>
           </div>

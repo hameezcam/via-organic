@@ -27,14 +27,14 @@ export default function Footer() {
                 <span className="font-serif text-2xl font-bold tracking-tight text-white group-hover:text-sand transition-colors">
                   VIA ORGANIC
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-sand/70 font-medium">
+                <span className="text-xs uppercase tracking-widest text-sand/70 font-medium">
                   Agriculture LLC • Dubai
                 </span>
               </div>
             </Link>
 
             <p className="text-xs sm:text-sm text-sand/80 leading-relaxed font-light max-w-md pt-2">
-              Transforming Spaces. Creating Living Landscapes. Dubai&apos;s premier 100% chemical-free organic landscaping and garden design studio. We bring living soil biology, edible kitchen gardens, and water-wise smart irrigation to villas and estates across the UAE.
+              Transforming Spaces. Creating Living Landscapes. Organic home gardens, landscaping and garden care for villas and apartments across the UAE, from a VIA Group company farming organically since 2015.
             </p>
 
             {/* Social Icons */}
@@ -80,16 +80,10 @@ export default function Footer() {
                 <a href="#services" className="hover:text-gold transition-colors">Core Services</a>
               </li>
               <li>
-                <a href="#packages" className="hover:text-gold transition-colors">Villa Packages</a>
+                <a href="#packages" className="hover:text-gold transition-colors">Garden Packages</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold transition-colors">Organic Products</a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-gold transition-colors">Project Portfolio</a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-gold transition-colors">Client Reviews</a>
+                <a href="#gallery" className="hover:text-gold transition-colors">Our Work</a>
               </li>
               <li>
                 <a href="#faq" className="hover:text-gold transition-colors">FAQ</a>
@@ -108,7 +102,6 @@ export default function Footer() {
               <li>Smart Precision Irrigation</li>
               <li>Living Desert Soil Care</li>
               <li>Annual Villa Maintenance (AMC)</li>
-              <li>Hardscape & Pergola Styling</li>
               <li>Commercial Landscaping</li>
             </ul>
           </div>
@@ -135,8 +128,8 @@ export default function Footer() {
                   {SITE_CONFIG.email}
                 </a>
               </div>
-              <p className="pt-2 text-[11px] text-sand/60">
-                Key communities: Dubai Hills Estate, Jumeirah, Emirates Hills, Tilal Al Ghaf, Palm Jumeirah, Al Barari, Arabian Ranches & Abu Dhabi.
+              <p className="pt-2 text-xs text-sand/70">
+                Serving villas and apartments in Dubai, Abu Dhabi and across the UAE.
               </p>
             </div>
           </div>
@@ -145,15 +138,13 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand/60 font-light">
           <p>
-            © 2026 {SITE_CONFIG.name}. All rights reserved. 100% Chemical-Free Landscaping in UAE.
+            © 2026 {SITE_CONFIG.name}. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="#about" className="hover:text-sand transition-colors">Privacy & Terms</a>
-            <span>•</span>
             <a
               href="#"
-              className="inline-flex items-center gap-1 hover:text-gold transition-colors"
+              className="inline-flex items-center gap-1 py-2 hover:text-gold transition-colors"
               aria-label="Back to Top"
             >
               <span>Back to Top</span>

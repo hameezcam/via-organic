@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Leaf, Droplets, HeartHandshake, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { Leaf, Droplets, HeartHandshake, CheckCircle2 } from 'lucide-react';
 
 export default function About() {
   return (
@@ -25,19 +25,19 @@ export default function About() {
           <div className="lg:col-span-5 relative">
             <div className="relative h-[420px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <Image
-                src="/images/luxury-estate.png"
-                alt="VIA Organic living villa garden sanctuary in Dubai"
+                src="/images/crops.jpg"
+                alt="Organic crops growing on a VIA Group farm in Sri Lanka"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white p-4 rounded-2xl bg-forest/80 backdrop-blur-md border border-white/10">
-                <p className="font-serif text-lg font-semibold italic text-sand-light">
-                  &ldquo;A garden should not merely survive the desert; it should become a living, breathing sanctuary.&rdquo;
+                <p className="font-serif text-lg font-semibold text-sand-light">
+                  1,750 acres of organic mixed crops
                 </p>
-                <p className="text-xs text-sand/80 mt-1 uppercase tracking-wider">
-                  — Hafeez Cambal, Founder & Agronomist
+                <p className="text-sm text-sand/90 mt-1">
+                  Farmed by the VIA Group in Sri Lanka since 2015
                 </p>
               </div>
             </div>
@@ -47,8 +47,8 @@ export default function About() {
               <div className="w-10 h-10 rounded-full bg-forest text-gold flex items-center justify-center font-bold text-sm shrink-0">
                 10+
               </div>
-              <div className="text-xs text-forest font-semibold leading-tight">
-                Years of Organic Agronomy Experience
+              <div className="text-sm text-forest font-semibold leading-tight">
+                Years of Organic Farming Experience
               </div>
             </div>
           </div>
@@ -57,13 +57,13 @@ export default function About() {
           <div className="lg:col-span-7 space-y-8">
             <div>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest mb-4">
-                Our Story: From Organic Farms to Dubai Villa Sanctuaries
+                Our Story: From Organic Farms to UAE Gardens
               </h3>
               <p className="text-charcoal-muted leading-relaxed mb-4">
-                Founded originally in 2016 in Sri Lanka with large-scale organic commercial agriculture, certified organic fertilizer manufacturing, and dried organic food production, VIA Organic expanded to Dubai in 2023 to resolve a widespread problem: desert gardens that look stunning for three weeks, then wither under harsh summer heat and chemical overuse.
+                VIA Organic began in Sri Lanka in 2015 as part of the VIA Group. Today the group runs a commercial organic farming operation across 1,750 acres of mixed crops, producing organic fertilizers and dried organic foods that meet export standards for Europe and the United States.
               </p>
               <p className="text-charcoal-muted leading-relaxed">
-                By bringing decade-tested agricultural science directly to private estates, residential villas, and commercial properties across Dubai and Abu Dhabi, we replace synthetic fixes with natural soil vitality.
+                We have brought that experience to the UAE, where we design, install and maintain organic gardens for villas and apartments, and advise farms on modern growing systems.
               </p>
             </div>
 
@@ -87,7 +87,7 @@ export default function About() {
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>100% non-toxic for children & pets</span>
+                  <span>Safer for children, pets & pollinators</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -95,7 +95,7 @@ export default function About() {
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Zero chemical runoff into groundwater</span>
+                  <span>No synthetic chemical runoff</span>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function About() {
                 1. Ecological Integrity
               </h4>
               <p className="text-sm text-charcoal-muted leading-relaxed">
-                We refuse toxic shortcuts. Every compost blend, soil amendment, and pest deterrent is 100% certified organic, completely safe for barefoot children, pets, and pollinators.
+                We refuse toxic shortcuts. We use organic compost, soil amendments and natural pest deterrents that are kinder to children, pets and pollinators.
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function About() {
                 2. Water Wisdom
               </h4>
               <p className="text-sm text-charcoal-muted leading-relaxed">
-                Water is precious in the Arabian desert. Through root-zone subsurface drip networks and climate-responsive sensors, our landscapes thrive on up to 50% less water.
+                Water is precious in the Arabian desert. Through root-zone subsurface drip networks and climate-responsive sensors, our gardens use water where the roots need it and waste less of it.
               </p>
             </div>
 

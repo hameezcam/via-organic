@@ -2,15 +2,14 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { MapPin, ExternalLink, Sparkles } from 'lucide-react';
+import { MapPin, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from '@/components/Icons';
 import { GALLERY_PROJECTS, SITE_CONFIG } from '@/data/siteData';
 
 const CATEGORIES = [
   { key: 'all', label: 'All Projects' },
-  { key: 'villa', label: 'Villa Estates' },
-  { key: 'edible', label: 'Edible Kitchen Gardens' },
-  { key: 'transformation', label: 'Before & After' },
+  { key: 'villa', label: 'Villa Gardens' },
+  { key: 'edible', label: 'Planters & Edible Gardens' },
 ];
 
 export default function Gallery() {
@@ -27,13 +26,13 @@ export default function Gallery() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-forest-light mb-3 inline-block">
-            Portfolio of Living Work
+            Our Work
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest mb-6">
-            Completed Projects Across the UAE
+            Recent Gardens Across the UAE
           </h2>
           <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Explore authentic transformations delivered across prestigious communities including Dubai Hills Estate, Jumeirah, and Tilal Al Ghaf.
+            A selection of villa gardens we have planted and cared for. Follow us on Instagram for more.
           </p>
         </div>
 
@@ -42,6 +41,8 @@ export default function Gallery() {
           {CATEGORIES.map((cat) => (
             <button
               key={cat.key}
+              type="button"
+              aria-pressed={activeCategory === cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                 activeCategory === cat.key
@@ -56,16 +57,14 @@ export default function Gallery() {
 
         {/* Masonry / Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {filteredProjects.map((project, idx) => {
-            const isTall = idx % 3 === 0;
-
+          {filteredProjects.map((project) => {
             return (
               <div
                 key={project.id}
-                className="group relative rounded-3xl overflow-hidden bg-white border border-sand/80 shadow-xs hover:shadow-2xl transition-all duration-300 flex flex-col"
+                className="group relative rounded-3xl overflow-hidden border border-sand/80 shadow-xs hover:shadow-2xl transition-all duration-300"
               >
                 {/* Photo */}
-                <div className={`relative w-full ${isTall ? 'h-80 sm:h-96' : 'h-72'} overflow-hidden`}>
+                <div className="relative w-full h-80 sm:h-96 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -86,13 +85,9 @@ export default function Gallery() {
                     <h3 className="font-serif text-xl sm:text-2xl font-bold mb-1.5 text-sand-light">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-sand/80 line-clamp-2 mb-2 font-light">
+                    <p className="text-sm text-sand/90 line-clamp-2 font-light">
                       {project.description}
                     </p>
-                    <div className="flex items-center gap-1.5 text-[11px] text-emerald-300 font-medium">
-                      <Sparkles className="w-3 h-3 text-gold" />
-                      <span>{project.highlight}</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -113,7 +108,7 @@ export default function Gallery() {
                 Explore More on Instagram: {SITE_CONFIG.instagramHandle}
               </h3>
               <p className="text-sand/80 text-xs sm:text-sm max-w-xl">
-                Daily reels of organic soil preparation, edible harvests, villa garden reveals, and UAE gardening tips.
+                Garden reveals, harvests and organic gardening tips from our team in the UAE.
               </p>
             </div>
 

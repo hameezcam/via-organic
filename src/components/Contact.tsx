@@ -18,7 +18,7 @@ export default function Contact() {
     fullName: '',
     phone: '',
     community: '',
-    serviceRequired: 'Bespoke Villa Garden Design',
+    serviceRequired: 'Villa Garden Package',
     message: '',
   });
 
@@ -27,12 +27,12 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formattedMessage = `*New Villa Consultation Request — VIA Organic*
+    const formattedMessage = `*New Garden Enquiry — VIA Organic*
 • *Name:* ${formData.fullName}
 • *Phone:* ${formData.phone}
-• *Community / Villa:* ${formData.community || 'Dubai'}
+• *Area:* ${formData.community || 'Not given'}
 • *Service Required:* ${formData.serviceRequired}
-• *Details:* ${formData.message || 'Please contact me to schedule a complimentary on-site consultation.'}`;
+• *Details:* ${formData.message || 'Please contact me to arrange a site visit.'}`;
 
     const waLink = buildWhatsAppLink(formattedMessage);
     setSubmitted(true);
@@ -52,10 +52,10 @@ export default function Contact() {
             Start Your Transformation
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest mb-6">
-            Get in Touch With Our Dubai Agronomists
+            Get in Touch With Our Team
           </h2>
           <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Book a complimentary on-site villa garden survey or inquire about our packages. Fill in the form to start a conversation directly on WhatsApp.
+            Ask about a package or a landscaping quote. Fill in the form to start a conversation directly on WhatsApp.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="community" className="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">
-                    Villa Community / Area
+                    Community / Area
                   </label>
                   <input
                     type="text"
@@ -137,15 +137,13 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-sand-light/50 border border-sand focus:border-forest focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 text-sm transition-all"
                   >
-                    <option value="Bespoke Villa Garden Design">Bespoke Villa Garden Design</option>
-                    <option value="Organic Vegetable & Kitchen Garden">Organic Vegetable & Kitchen Garden</option>
-                    <option value="Smart Irrigation Upgrade">Smart Water & Precision Drip Irrigation</option>
-                    <option value="Living Soil Care & Conditioning">Living Soil Care & Conditioning</option>
-                    <option value="Annual Maintenance Contract (AMC)">Annual Maintenance Contract (AMC)</option>
-                    <option value="Bronze Package (AED 3,499)">Bronze Package (AED 3,499)</option>
-                    <option value="Silver Package (AED 6,999)">Silver Package (AED 6,999)</option>
-                    <option value="Gold Package (AED 12,499 - Most Popular)">Gold Package (AED 12,499 - Most Popular)</option>
-                    <option value="Platinum Package (AED 24,999)">Platinum Package (AED 24,999)</option>
+                    <option value="Villa Garden Package">Villa garden package (AED 1,000 – 3,800)</option>
+                    <option value="Apartment Balcony Package">Apartment balcony package (AED 1,200 – 3,400)</option>
+                    <option value="Garden Design & Landscaping">Garden design & landscaping</option>
+                    <option value="Organic Vegetable & Kitchen Garden">Organic vegetable & kitchen garden</option>
+                    <option value="Drip Irrigation">Drip irrigation</option>
+                    <option value="Soil Care & Organic Nutrition">Soil care & organic nutrition</option>
+                    <option value="Annual Maintenance Contract (AMC)">Annual maintenance contract (AMC)</option>
                   </select>
                 </div>
               </div>
@@ -246,7 +244,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-xs font-semibold uppercase text-charcoal-muted tracking-wider block">
-                      Dubai Operations Centre
+                      Dubai Office
                     </span>
                     <p className="text-charcoal-muted leading-relaxed">
                       {SITE_CONFIG.address.street}, {SITE_CONFIG.address.city}, {SITE_CONFIG.address.country}
@@ -266,7 +264,7 @@ export default function Contact() {
                     <p className="text-charcoal font-medium">
                       {SITE_CONFIG.openingHours.weekdays}
                     </p>
-                    <p className="text-xs text-charcoal-muted">
+                    <p className="text-sm text-charcoal-muted">
                       {SITE_CONFIG.openingHours.sunday}
                     </p>
                   </div>
@@ -280,14 +278,14 @@ export default function Contact() {
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-emerald-600" />
                   <span className="font-serif text-lg font-bold text-forest">
-                    Dubai & UAE Coverage
+                    Find Our Office
                   </span>
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Dubai+UAE"
+                  href={SITE_CONFIG.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
+                  className="text-sm font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-1 py-2"
                 >
                   <span>Open in Maps</span>
                   <ExternalLink className="w-3 h-3" />
@@ -297,8 +295,8 @@ export default function Contact() {
               {/* Embedded Google Map iframe */}
               <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-sand">
                 <iframe
-                  title="Google Map of Dubai VIA Organic Coverage"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115587.72895697334!2d55.15848834468202!3d25.132514138670868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+                  title="Map showing the VIA Organic office on Al Rigga Street, Deira, Dubai"
+                  src={SITE_CONFIG.mapsEmbedUrl}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
