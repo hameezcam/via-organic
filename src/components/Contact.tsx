@@ -55,7 +55,7 @@ export default function Contact() {
             Get in Touch With Our Team
           </h2>
           <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Ask about a package, a landscaping quote or our products. Fill in the form to start a conversation directly on WhatsApp.
+            Ask about a package or a landscaping quote. Fill in the form to start a conversation directly on WhatsApp.
           </p>
         </div>
 
@@ -144,7 +144,6 @@ export default function Contact() {
                     <option value="Drip Irrigation">Drip irrigation</option>
                     <option value="Soil Care & Organic Nutrition">Soil care & organic nutrition</option>
                     <option value="Annual Maintenance Contract (AMC)">Annual maintenance contract (AMC)</option>
-                    <option value="Organic Products">Organic products</option>
                   </select>
                 </div>
               </div>

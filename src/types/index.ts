@@ -16,14 +16,6 @@ export interface PricingPackage {
   recommendedFor: string;
 }
 
-export interface ProductItem {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  image: string;
-}
-
 export interface GalleryProject {
   id: string;
   title: string;

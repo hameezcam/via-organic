@@ -83,9 +83,6 @@ export default function Footer() {
                 <a href="#packages" className="hover:text-gold transition-colors">Garden Packages</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold transition-colors">Organic Products</a>
-              </li>
-              <li>
                 <a href="#gallery" className="hover:text-gold transition-colors">Our Work</a>
               </li>
               <li>

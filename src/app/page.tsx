@@ -4,7 +4,6 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import Packages from '@/components/Packages';
-import Products from '@/components/Products';
 import Gallery from '@/components/Gallery';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
@@ -30,20 +29,17 @@ export default function Home() {
         {/* 4. Packages: Bronze to Platinum in AED, for apartments and villas */}
         <Packages />
 
-        {/* 5. Products: VIA Group organic products */}
-        <Products />
-
-        {/* 6. Gallery: Masonry Project Grid & Instagram Link */}
+        {/* 5. Gallery: Masonry Project Grid & Instagram Link */}
         <Gallery />
 
-        {/* 8. FAQ: Interactive Accordion */}
+        {/* 6. FAQ: Interactive Accordion */}
         <Faq />
 
-        {/* 9. Contact: Form Sending to WhatsApp + Phone + Email + Dubai Map + Hours */}
+        {/* 7. Contact: Form Sending to WhatsApp + Phone + Email + Dubai Map + Hours */}
         <Contact />
       </main>
 
-      {/* 10. Footer & Floating WhatsApp Trigger */}
+      {/* 8. Footer & Floating WhatsApp Trigger */}
       <Footer />
       <FloatingWhatsApp />
     </div>

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description:
-    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000, drip irrigation, maintenance and organic products from VIA Group farms.",
+    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000, drip irrigation and garden maintenance.",
   keywords: [
     "organic landscaping dubai",
     "villa garden design dubai",

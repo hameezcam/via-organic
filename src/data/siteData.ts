@@ -1,7 +1,6 @@
 import {
   ServiceItem,
   PricingPackage,
-  ProductItem,
   GalleryProject,
   FaqItem,
 } from '@/types';
@@ -193,41 +192,6 @@ export function packageWhatsAppMessage(pkg: PricingPackage): string {
   const space = PACKAGE_SPACES.find((s) => s.key === pkg.space)?.label ?? '';
   return `Hello VIA Organic, I am interested in the ${space} ${pkg.name} package (AED ${pkg.priceAed.toLocaleString('en-AE')}). Please let me know your earliest site visit availability.`;
 }
-
-export const PRODUCTS_DATA: ProductItem[] = [
-  {
-    id: 'prod-fertilizers',
-    name: 'Organic Fertilizers',
-    category: 'Soil Nutrition',
-    description:
-      'Solid and liquid organic fertilizers made by the VIA Group in Sri Lanka that feed the soil naturally.',
-    image: '/images/fertilizer-pellets.jpg',
-  },
-  {
-    id: 'prod-compost',
-    name: 'Compost & Growing Media',
-    category: 'Soil & Growing Media',
-    description:
-      'Organic compost and coco peat for healthy roots in home gardens and greenhouses.',
-    image: '/images/seedling-sack.jpg',
-  },
-  {
-    id: 'prod-dried-foods',
-    name: 'Dried Organic Foods',
-    category: 'Organic Food',
-    description:
-      'Fruit chips and powders made from organic produce, dried to keep their nutrition.',
-    image: '/images/dried-banana.jpg',
-  },
-  {
-    id: 'prod-dehydrated',
-    name: 'Dehydrated Vegetables & Herbs',
-    category: 'Organic Food',
-    description:
-      'Naturally dehydrated vegetables and herbs with a long shelf life.',
-    image: '/images/dried-produce.jpg',
-  },
-];
 
 export const GALLERY_PROJECTS: GalleryProject[] = [
   {
