@@ -33,6 +33,25 @@ export const SITE_CONFIG = {
   },
 };
 
+export const NAV_LINKS = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Packages', href: '/packages' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+];
+
+export const FARM_PHOTOS = [
+  { src: '/images/farm-team.jpg', alt: 'VIA Group team tending organic crops in Sri Lanka' },
+  { src: '/images/farm-mango-harvest.jpg', alt: 'Bagged mangoes ready for harvest on a VIA Group orchard' },
+  { src: '/images/farm-strawberry.jpg', alt: 'A strawberry grown in a VIA Group vertical growing system' },
+  { src: '/images/farm-orchard.jpg', alt: 'Rows of mango trees on a VIA Group orchard' },
+  { src: '/images/farm-field.jpg', alt: 'Organic vegetable field on a VIA Group farm' },
+  { src: '/images/farm-mango.jpg', alt: 'A ripening mango on the tree' },
+];
+
 export function buildWhatsAppLink(message: string): string {
   const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '');
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
@@ -41,7 +60,8 @@ export function buildWhatsAppLink(message: string): string {
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: 'garden-design',
-    title: 'Bespoke Garden Design & Landscaping',
+    image: '/images/project-aldar-abu-dhabi.jpg',
+    title: 'Garden Design & Landscaping',
     shortDesc:
       'Architectural landscape concepts balancing serene stone, shade pergolas, and climate-resilient organic greenery.',
     iconName: 'Compass',
@@ -56,6 +76,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'organic-vegetables',
+    image: '/images/farm-crops.jpg',
     title: 'Organic Vegetable & Kitchen Gardens',
     shortDesc:
       'Bountiful farm-to-table raised beds and edible havens yielding fresh, non-toxic heirloom herbs and seasonal produce.',
@@ -71,7 +92,8 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'smart-irrigation',
-    title: 'Smart Water & Precision Irrigation',
+    image: '/images/project-residential-pergola.jpg',
+    title: 'Drip Irrigation',
     shortDesc:
       'Intelligent subsurface drip and automated hydrologic networks designed to put water where the roots need it.',
     iconName: 'Droplets',
@@ -86,7 +108,8 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'soil-care',
-    title: 'Living Soil Care & Organic Nutrition',
+    image: '/images/farm-field.jpg',
+    title: 'Soil Care & Organic Nutrition',
     shortDesc:
       'Transforming arid desert sands into nutrient-dense, microbially active living earth with zero synthetic chemicals.',
     iconName: 'Sprout',
@@ -101,7 +124,8 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'estate-maintenance',
-    title: 'Annual Estate Maintenance (AMC)',
+    image: '/images/project-dubai-hills.jpg',
+    title: 'Garden Maintenance (AMC)',
     shortDesc:
       'Regular visits from our organic farm consultants to keep your garden healthy year-round.',
     iconName: 'ShieldCheck',
@@ -241,6 +265,22 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     category: 'villa',
     image: '/images/entrance-pathway.jpg',
     description: 'A villa entrance with paved steps, turf and low garden lighting.',
+  },
+  {
+    id: 'proj-7',
+    title: 'Turf Side Garden',
+    location: 'Dubai',
+    category: 'villa',
+    image: '/images/project-side-garden.jpg',
+    description: 'A side return laid with turf and edged with a raised planting bed.',
+  },
+  {
+    id: 'proj-8',
+    title: 'Garden Walkway',
+    location: 'Dubai',
+    category: 'villa',
+    image: '/images/project-garden-walkway.jpg',
+    description: 'Shrubs, potted trees and a stepping stone path along a villa wall.',
   },
 ];
 

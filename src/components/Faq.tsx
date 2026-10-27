@@ -12,21 +12,8 @@ export default function Faq() {
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-28 bg-cream text-charcoal border-b border-sand/60">
+    <section className="py-16 sm:py-20 bg-cream text-charcoal">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-forest-light mb-3 inline-block">
-            Clear Answers
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Everything you need to know about organic landscaping, water conservation, and living gardens in Dubai&apos;s climate.
-          </p>
-        </div>
-
         {/* Accordion Container */}
         <div className="space-y-4">
           {FAQ_DATA.map((faq) => {
@@ -82,7 +69,7 @@ export default function Faq() {
             </div>
             <div>
               <p className="font-serif text-base font-bold text-forest">
-                Have a specific question about your villa plot?
+                Have a question about your own garden?
               </p>
               <p className="text-xs text-charcoal-muted">
                 Message our team directly on WhatsApp and we will get back to you.
@@ -90,7 +77,7 @@ export default function Faq() {
             </div>
           </div>
           <a
-            href={buildWhatsAppLink('Hello VIA Organic, I have a question regarding my villa garden in Dubai.')}
+            href={buildWhatsAppLink('Hello VIA Organic, I have a question about my garden.')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest text-sand-light text-xs sm:text-sm font-semibold hover:bg-forest-light transition-colors shrink-0"

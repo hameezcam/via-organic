@@ -44,21 +44,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-sand-light/50 text-charcoal border-b border-sand/60">
+    <section className="py-16 sm:py-20 bg-sand-light/50 text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-forest-light mb-3 inline-block">
-            Start Your Transformation
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest mb-6">
-            Get in Touch With Our Team
-          </h2>
-          <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Ask about a package or a landscaping quote. Fill in the form to start a conversation directly on WhatsApp.
-          </p>
-        </div>
-
         {/* Form and Contact Details Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Form That Sends to WhatsApp */}
@@ -68,9 +55,9 @@ export default function Contact() {
                 <MessageSquare className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-forest">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
                   Direct WhatsApp Enquiry Form
-                </h3>
+                </h2>
                 <p className="text-xs text-charcoal-muted">
                   Submitting directly connects you with our team on WhatsApp with your enquiry details.
                 </p>
@@ -196,9 +183,9 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-6">
             {/* Quick Contact Info Card */}
             <div className="bg-white rounded-3xl p-8 border border-sand/80 shadow-md space-y-6">
-              <h3 className="font-serif text-2xl font-bold text-forest">
+              <h2 className="font-serif text-2xl font-bold text-forest">
                 Direct Contact Details
-              </h3>
+              </h2>
 
               <div className="space-y-5 text-sm">
                 {/* Phone */}

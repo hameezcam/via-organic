@@ -3,6 +3,7 @@ export interface ServiceItem {
   title: string;
   shortDesc: string;
   iconName: string;
+  image: string;
   features: string[];
   whatsappMessage: string;
 }
