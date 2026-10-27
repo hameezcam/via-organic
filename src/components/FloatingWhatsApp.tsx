@@ -8,7 +8,7 @@ export default function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(true);
 
   const defaultMessage =
-    'Hello VIA Organic, I would like to speak with an agronomist regarding my villa garden in Dubai.';
+    'Hello VIA Organic, I would like to ask about a garden for my home.';
   const waUrl = buildWhatsAppLink(defaultMessage);
 
   return (
@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
       {showTooltip && (
         <div className="hidden md:flex items-center gap-2 bg-white text-charcoal px-3.5 py-2 rounded-2xl shadow-xl border border-sand text-xs font-medium animate-in fade-in slide-in-from-right-4 duration-300">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-          <span>Chat with our Dubai Agronomist</span>
+          <span>Questions? Chat with us</span>
           <button
             onClick={() => setShowTooltip(false)}
             className="text-charcoal-muted hover:text-charcoal p-0.5 rounded-full ml-1"

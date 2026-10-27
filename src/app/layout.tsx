@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_CONFIG } from "@/data/siteData";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -27,7 +30,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.shortName} | Organic Landscaping & Garden Design Dubai`,
+    default: `${SITE_CONFIG.shortName} | Organic Home Gardens & Landscaping in Dubai`,
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description:
@@ -52,7 +55,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "VIA Organic | Organic Landscaping & Garden Design Dubai",
+    title: "VIA Organic | Organic Home Gardens & Landscaping in Dubai",
     description:
       "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000.",
     url: SITE_CONFIG.url,
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VIA Organic | Organic Landscaping & Garden Design Dubai",
+    title: "VIA Organic | Organic Home Gardens & Landscaping in Dubai",
     description:
       "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE.",
     images: ["/images/og-image.jpg"],
@@ -176,8 +179,22 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col font-sans bg-cream text-charcoal antialiased selection:bg-sand-dark selection:text-forest">
-        {children}
+      <body
+        id="top"
+        className="min-h-screen flex flex-col font-sans bg-cream text-charcoal antialiased selection:bg-sand-dark selection:text-forest"
+      >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-full focus:bg-forest focus:text-sand-light"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main-content" className="grow">
+          {children}
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

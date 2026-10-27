@@ -16,21 +16,8 @@ export default function Packages() {
   const visiblePackages = PACKAGES_DATA.filter((pkg) => pkg.space === activeSpace);
 
   return (
-    <section id="packages" className="py-20 sm:py-28 bg-cream text-charcoal border-b border-sand/60">
+    <section className="py-16 sm:py-20 bg-cream text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-forest-light mb-3 inline-block">
-            Home Garden Packages
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest mb-6">
-            Grow Your Own, Whatever Your Space
-          </h2>
-          <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed font-light">
-            Every package includes setup, seeds chosen with you, and a weekly visit from an organic farm consultant.
-          </p>
-        </div>
-
         {/* Apartment / Villa Toggle */}
         <div
           role="tablist"
@@ -74,7 +61,7 @@ export default function Packages() {
               >
                 <div>
                   {/* Header */}
-                  <h3 className="font-serif text-2xl font-bold mb-4 text-forest">{pkg.name}</h3>
+                  <h2 className="font-serif text-2xl font-bold mb-4 text-forest">{pkg.name}</h2>
 
                   {/* Pricing in AED */}
                   <div className="mb-6 pb-6 border-b border-sand/40">
@@ -117,9 +104,9 @@ export default function Packages() {
         {/* Custom Projects Notice */}
         <div className="mt-16 text-center bg-sand-light p-6 rounded-2xl border border-sand max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <h3 className="font-serif text-lg font-bold text-forest">
+            <h2 className="font-serif text-lg font-bold text-forest">
               Need landscaping or a larger project?
-            </h3>
+            </h2>
             <p className="text-sm text-charcoal-muted">
               We also quote for full garden landscaping, irrigation, maintenance and commercial sites.
             </p>

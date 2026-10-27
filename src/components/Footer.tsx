@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MessageSquare, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 import { InstagramIcon } from '@/components/Icons';
-import { SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
+import { NAV_LINKS, SERVICES_DATA, SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
 
 export default function Footer() {
   return (
@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm text-sand/80 leading-relaxed font-light max-w-md pt-2">
+            <p className="text-sm text-sand/80 leading-relaxed font-light max-w-md pt-2">
               Transforming Spaces. Creating Living Landscapes. Organic home gardens, landscaping and garden care for villas and apartments across the UAE, from a VIA Group company farming organically since 2015.
             </p>
 
@@ -67,50 +67,43 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 3: Quick Links */}
+          {/* Col 3: Pages */}
           <div className="space-y-3">
-            <h4 className="font-serif text-lg font-bold text-white tracking-wide">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-sand/80 font-light">
-              <li>
-                <a href="#about" className="hover:text-gold transition-colors">About Our Story</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-gold transition-colors">Core Services</a>
-              </li>
-              <li>
-                <a href="#packages" className="hover:text-gold transition-colors">Garden Packages</a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-gold transition-colors">Our Work</a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-gold transition-colors">FAQ</a>
-              </li>
+            <h2 className="font-serif text-lg font-bold text-white tracking-wide">
+              Explore
+            </h2>
+            <ul className="space-y-1 text-sm text-sand/80 font-light">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="inline-block py-1 hover:text-gold transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 4: Services */}
           <div className="space-y-3">
-            <h4 className="font-serif text-lg font-bold text-white tracking-wide">
-              Our Disciplines
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-sand/80 font-light">
-              <li>Bespoke Garden Design</li>
-              <li>Organic Kitchen Gardens</li>
-              <li>Smart Precision Irrigation</li>
-              <li>Living Desert Soil Care</li>
-              <li>Annual Villa Maintenance (AMC)</li>
-              <li>Commercial Landscaping</li>
+            <h2 className="font-serif text-lg font-bold text-white tracking-wide">
+              Services
+            </h2>
+            <ul className="space-y-1 text-sm text-sand/80 font-light">
+              {SERVICES_DATA.map((service) => (
+                <li key={service.id}>
+                  <Link href={`/services#${service.id}`} className="inline-block py-1 hover:text-gold transition-colors">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 5: UAE Coverage & Contact */}
           <div className="space-y-3">
-            <h4 className="font-serif text-lg font-bold text-white tracking-wide">
+            <h2 className="font-serif text-lg font-bold text-white tracking-wide">
               Direct Contact
-            </h4>
+            </h2>
             <div className="space-y-2.5 text-xs sm:text-sm text-sand/80 font-light">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
@@ -143,7 +136,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#"
+              href="#top"
               className="inline-flex items-center gap-1 py-2 hover:text-gold transition-colors"
               aria-label="Back to Top"
             >
