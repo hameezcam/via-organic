@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #1b3b22;
+  --color-forest-light: #2a5a35;
+  --color-forest-dark: #102415;
+  --color-sage: #6e8a6c;
+  --color-sage-light: #eef3ed;
+  --color-sand: #eae3d2;
+  --color-sand-light: #f7f4ec;
+  --color-sand-dark: #d5caa8;
+  --color-cream: #faf8f3;
+  --color-earth: #4e3524;
+  --color-gold: #c29b38;
+  --color-charcoal: #1d261e;
+  --color-charcoal-muted: #4e5c50;
+
+  --font-serif: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --background: #faf8f3;
+  --foreground: #1d261e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f4ec;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d4c5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8fa98f;
+}
+
+/* Subtle glow and luxury card transitions */
+.luxury-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(27, 59, 34, 0.08);
+}
+
+/* Pulse animation for WhatsApp badge */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 14px 30px -2px rgba(37, 211, 102, 0.6);
+  }
+}
+
+.pulse-soft {
+  animation: softPulse 2.8s infinite ease-in-out;
+}
