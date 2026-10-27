@@ -3,7 +3,6 @@ import {
   PricingPackage,
   ProductItem,
   GalleryProject,
-  TestimonialItem,
   FaqItem,
 } from '@/types';
 
@@ -12,7 +11,9 @@ export const SITE_CONFIG = {
   shortName: 'VIA Organic',
   tagline: 'Transforming Spaces. Creating Living Landscapes.',
   domain: 'viaorganic.ae',
-  url: 'https://viaorganic.ae',
+  // Vercel sets this to the production domain at build time, so canonical and
+  // social links follow the site when viaorganic.ae is connected to the project.
+  url: `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'via-organic.vercel.app'}`,
   whatsappNumber: '+971559596830', // International format for wa.me
   whatsappDisplay: '+971 55 959 6830',
   phone: '+971 55 959 6830',
@@ -20,15 +21,16 @@ export const SITE_CONFIG = {
   instagram: 'https://instagram.com/viaorganic',
   instagramHandle: '@viaorganic',
   address: {
-    street: 'Warehouse 14, Al Quoz Industrial Area 3 [REPLACE with exact unit if required]',
+    street: 'Office No 76, 3rd Floor, Al Rigga Street, Deira',
     city: 'Dubai',
     emirate: 'Dubai',
     country: 'United Arab Emirates',
-    postalCode: '00000',
   },
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Al+Rigga+Street+Deira+Dubai',
+  mapsEmbedUrl: 'https://maps.google.com/maps?q=Al%20Rigga%20Street%2C%20Deira%2C%20Dubai&z=15&output=embed',
   openingHours: {
-    weekdays: 'Monday – Saturday: 08:00 – 18:00',
-    sunday: 'Sunday: By Appointment Only',
+    weekdays: 'Site visits by appointment',
+    sunday: 'Message us on WhatsApp to book a time',
   },
 };
 
@@ -61,7 +63,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Carrot',
     features: [
       'Handcrafted natural timber & masonry raised beds',
-      'Certified non-GMO heirloom organic seeds',
+      'Non-GMO heirloom seeds chosen with you',
       'Micro-climate shade canopies for UAE summers',
       'Companion planting for chemical-free pest deterrence',
     ],
@@ -72,7 +74,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     id: 'smart-irrigation',
     title: 'Smart Water & Precision Irrigation',
     shortDesc:
-      'Intelligent subsurface drip and automated hydrologic networks engineered to reduce water wastage by up to 50%.',
+      'Intelligent subsurface drip and automated hydrologic networks designed to put water where the roots need it.',
     iconName: 'Droplets',
     features: [
       'Weather-adaptive smart Wi-Fi controllers',
@@ -102,7 +104,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     id: 'estate-maintenance',
     title: 'Annual Estate Maintenance (AMC)',
     shortDesc:
-      'White-glove periodic care by certified agronomists keeping your villa sanctuary thriving and pristine year-round.',
+      'Regular visits from our organic farm consultants to keep your garden healthy year-round.',
     iconName: 'ShieldCheck',
     features: [
       'Weekly or bi-weekly dedicated horticulture visits',
@@ -117,253 +119,164 @@ export const SERVICES_DATA: ServiceItem[] = [
 
 export const PACKAGES_DATA: PricingPackage[] = [
   {
-    id: 'bronze',
-    name: 'Bronze Package',
-    tagline: 'Garden Revitalisation',
-    priceAed: 3499,
-    cadence: 'One-off Transformation / Villa Terrace',
-    recommendedFor: 'Townhouses, compact villa gardens & courtyard refresh projects up to 250 sq.m.',
-    features: [
-      'Comprehensive on-site soil and plant health diagnosis',
-      'Full organic soil reconditioning (1,000L living compost)',
-      'Seasonal aesthetic pruning & aesthetic turf edging',
-      'Complete irrigation pressure & dripper audit',
-      'Planting of up to 25 seasonal organic accent perennials',
-      '30-day post-service health guarantee',
-    ],
-    notIncluded: ['Custom hardscaping & pergolas', 'Weekly ongoing maintenance'],
-    whatsappMessage:
-      'Hello VIA Organic, I am interested in booking the Bronze Garden Revitalisation Package (AED 3,499). Please let me know your earliest site visit availability.',
+    id: 'apartment-bronze',
+    space: 'apartment',
+    name: 'Bronze',
+    priceAed: 1200,
+    recommendedFor: 'Balconies from 1 sqm',
+    features: ['40 herbs', '40 green leafy plants', 'Organic 2 aeroponic system'],
   },
   {
-    id: 'silver',
-    name: 'Silver Package',
-    tagline: 'Living Villa Oasis',
-    priceAed: 6999,
-    cadence: 'Complete Refresh + Vegetable Pod',
-    recommendedFor: 'Independent villas in Dubai Hills, Tilal Al Ghaf & Arabian Ranches up to 500 sq.m.',
-    features: [
-      'Everything included in Bronze package',
-      'Installation of 1 handcrafted Cedar Raised Vegetable Bed (2m x 1m)',
-      'Premium organic heirloom planting (herbs, leafy greens & tomatoes)',
-      'Smart 2-zone Wi-Fi irrigation controller installation',
-      'Microbial biological soil treatment for desert tolerance',
-      '2 complimentary follow-up agronomist checkups',
-    ],
-    whatsappMessage:
-      'Hello VIA Organic, I would like to book the Silver Living Villa Oasis Package (AED 6,999). Please contact me to schedule a visit.',
+    id: 'apartment-silver',
+    space: 'apartment',
+    name: 'Silver',
+    priceAed: 1800,
+    recommendedFor: 'Balconies from 2 sqm',
+    features: ['50 herbs', '70 green leafy plants', 'Organic 3 aeroponic system'],
   },
   {
-    id: 'gold',
-    name: 'Gold Package',
-    tagline: 'Signature Villa Sanctuary',
-    priceAed: 12499,
-    cadence: 'Comprehensive Master Transformation',
-    isPopular: true,
-    recommendedFor: 'Luxury villas, bespoke residences & private gardens seeking an organic showcase.',
-    features: [
-      'Comprehensive 3D landscape layout & planting masterplan',
-      'Two (2) custom large raised organic kitchen garden pods with drip feed',
-      'Deep-root soil remediation with imported biochar & living humus',
-      'Atmospheric low-voltage warm LED garden accent lighting (6 fixtures)',
-      'Installation of luxury ornamental trees (e.g. mature Olive or Frangipani)',
-      'Subsurface precision smart irrigation network with rain/moisture sensors',
-      '3 months complimentary white-glove organic AMC maintenance',
-      'Dedicated personal horticulturist on WhatsApp direct',
-    ],
-    whatsappMessage:
-      'Hello VIA Organic, I would like to book your most popular Gold Signature Villa Sanctuary Package (AED 12,499). Please get in touch for my villa survey.',
+    id: 'apartment-gold',
+    space: 'apartment',
+    name: 'Gold',
+    priceAed: 2300,
+    recommendedFor: 'Balconies from 3 sqm',
+    features: ['70 herbs', '90 green leafy plants', 'Organic 4 aeroponic system'],
   },
   {
-    id: 'platinum',
-    name: 'Platinum Package',
-    tagline: 'Master Estate & Edible Haven',
-    priceAed: 24999,
-    cadence: 'Bespoke Estate Architectural Suite',
-    recommendedFor: 'Large luxury estates, Emirates Hills, Palm Jumeirah & commercial boutique hospitality.',
-    features: [
-      'Full architectural landscape overhaul & hardscape consultation',
-      'Four (4) artisanal raised edible planter suites with automated climate shades',
-      'Complete living ecosystem installation: citrus grove, herb terrace & pollinator borders',
-      'Fully integrated multi-zone smart hydrologic station with app control',
-      'Architectural hardscape accents (natural stone stepping, pergola styling)',
-      '6 months VIP Annual Maintenance Contract (AMC) with weekly visits',
-      'Guaranteed replacement of any plant failing to flourish within 6 months',
-      'Executive horticulturist direct liaison and priority weekend response',
-    ],
-    whatsappMessage:
-      'Hello VIA Organic, I wish to enquire about the Platinum Master Estate & Edible Haven Package (AED 24,999). Please arrange a confidential private estate consultation.',
+    id: 'apartment-platinum',
+    space: 'apartment',
+    name: 'Platinum',
+    priceAed: 3400,
+    recommendedFor: 'Balconies from 4 sqm',
+    features: ['100 herbs', '140 green leafy plants', 'Organic 6 aeroponic system'],
+  },
+  {
+    id: 'villa-bronze',
+    space: 'villa',
+    name: 'Bronze',
+    priceAed: 1000,
+    recommendedFor: 'Outdoor space from 6 sqm',
+    features: ['50 vegetable plants', '15 herbs', '20 green leafy plants'],
+  },
+  {
+    id: 'villa-silver',
+    space: 'villa',
+    name: 'Silver',
+    priceAed: 1900,
+    recommendedFor: 'Outdoor space from 12 sqm',
+    features: ['90 vegetable plants', '30 herbs', '40 green leafy plants'],
+  },
+  {
+    id: 'villa-gold',
+    space: 'villa',
+    name: 'Gold',
+    priceAed: 2900,
+    recommendedFor: 'Outdoor space from 18 sqm',
+    features: ['130 vegetable plants', '60 herbs', '80 green leafy plants'],
+  },
+  {
+    id: 'villa-platinum',
+    space: 'villa',
+    name: 'Platinum',
+    priceAed: 3800,
+    recommendedFor: 'Outdoor space from 24 sqm',
+    features: ['180 vegetable plants', '90 herbs', '120 green leafy plants'],
   },
 ];
 
+export const PACKAGE_SPACES = [
+  { key: 'apartment', label: 'Apartment balcony' },
+  { key: 'villa', label: 'Villa garden' },
+] as const;
+
+export function packageWhatsAppMessage(pkg: PricingPackage): string {
+  const space = PACKAGE_SPACES.find((s) => s.key === pkg.space)?.label ?? '';
+  return `Hello VIA Organic, I am interested in the ${space} ${pkg.name} package (AED ${pkg.priceAed.toLocaleString('en-AE')}). Please let me know your earliest site visit availability.`;
+}
+
 export const PRODUCTS_DATA: ProductItem[] = [
   {
-    id: 'prod-living-soil',
-    name: 'VIA Organic Living Desert Soil Mix',
+    id: 'prod-fertilizers',
+    name: 'Organic Fertilizers',
+    category: 'Soil Nutrition',
+    description:
+      'Solid and liquid organic fertilizers made by the VIA Group in Sri Lanka that feed the soil naturally.',
+    image: '/images/fertilizer-pellets.jpg',
+  },
+  {
+    id: 'prod-compost',
+    name: 'Compost & Growing Media',
     category: 'Soil & Growing Media',
     description:
-      'Engineered specifically to convert Dubai sand into thriving living soil. Blended with worm castings, aged biochar, and beneficial mycorrhizae.',
-    priceAed: 85,
-    weightOrUnit: '50L Bag',
-    badge: 'Best Seller',
-    image: '/images/vegetable-garden.png',
+      'Organic compost and coco peat for healthy roots in home gardens and greenhouses.',
+    image: '/images/seedling-sack.jpg',
   },
   {
-    id: 'prod-bio-compost',
-    name: 'Artisan Micro-Thermal Bio-Compost',
-    category: 'Organic Soil Nutrition',
+    id: 'prod-dried-foods',
+    name: 'Dried Organic Foods',
+    category: 'Organic Food',
     description:
-      '100% vegetarian, thoroughly weed-free organic compost matured over 180 days for maximum microbial biodiversity and water retention.',
-    priceAed: 65,
-    weightOrUnit: '25kg Sack',
-    badge: '100% Organic',
-    image: '/images/vegetable-garden.png',
+      'Fruit chips and powders made from organic produce, dried to keep their nutrition.',
+    image: '/images/dried-banana.jpg',
   },
   {
-    id: 'prod-heirloom-seeds',
-    name: 'UAE Climate Heirloom Seed Collection',
-    category: 'Seeds & Planting',
+    id: 'prod-dehydrated',
+    name: 'Dehydrated Vegetables & Herbs',
+    category: 'Organic Food',
     description:
-      'Curated selection of non-GMO heirloom seeds selected for heat resilience: cherry tomatoes, kale, rocket, sweet basil, mint, and Arabian courgettes.',
-    priceAed: 120,
-    weightOrUnit: 'Kit of 8 Seed Varieties',
-    badge: 'High Germination',
-    image: '/images/project-villa-nova.png',
-  },
-  {
-    id: 'prod-cedar-bed',
-    name: 'Handcrafted Rot-Resistant Raised Garden Bed',
-    category: 'Garden Hardware',
-    description:
-      'Durable, chemical-free natural timber raised bed (180cm x 90cm x 40cm). Complete with internal geotextile lining and ergonomic height.',
-    priceAed: 950,
-    weightOrUnit: 'Per Unit (Assembled)',
-    badge: 'Handcrafted',
-    image: '/images/project-jumeirah.png',
-  },
-  {
-    id: 'prod-foliar-spray',
-    name: 'Organic Seaweed & Neem Defensive Tonic',
-    category: 'Natural Plant Health',
-    description:
-      'Cold-pressed Ascophyllum nodosum marine seaweed combined with organic cold-pressed neem to naturally protect against mites and whiteflies.',
-    priceAed: 75,
-    weightOrUnit: '1 Litre Concentrate',
-    badge: 'Non-Toxic',
-    image: '/images/project-dubai-hills.png',
-  },
-  {
-    id: 'prod-drip-kit',
-    name: 'Plug & Play Drip Irrigation Balcony/Patio Kit',
-    category: 'Water Systems',
-    description:
-      'Complete water-wise micro-irrigation system with digital tap timer, 25m UV-stabilised distribution line, and 20 pressure-compensating emitters.',
-    priceAed: 420,
-    weightOrUnit: 'Complete Kit',
-    badge: 'Water Saver',
-    image: '/images/project-tilal-al-ghaf.png',
+      'Naturally dehydrated vegetables and herbs with a long shelf life.',
+    image: '/images/dried-produce.jpg',
   },
 ];
 
 export const GALLERY_PROJECTS: GalleryProject[] = [
   {
     id: 'proj-1',
-    title: 'Luxury Villa Sanctuary',
+    title: 'Family Villa Lawn',
     location: 'Dubai Hills Estate, Dubai',
     category: 'villa',
-    image: '/images/project-dubai-hills.png',
-    description:
-      'Full backyard transformation featuring drought-tolerant lush turf, modern pergola accents, and automated subsurface drip irrigation.',
-    highlight: 'Water savings of 45% compared to conventional sprayers',
+    image: '/images/project-dubai-hills.jpg',
+    description: 'An open lawn with hedged borders, sized for children to play.',
   },
   {
     id: 'proj-2',
-    title: 'Private Mediterranean Oasis',
+    title: 'Tropical Courtyard Planting',
     location: 'Jumeirah 3, Dubai',
     category: 'villa',
-    image: '/images/project-jumeirah.png',
-    description:
-      'Tranquil coastal villa courtyard with mature olive trees, fragrant Jasmine climbers, and organic soil remediation.',
-    highlight: '100% synthetic chemical and pesticide-free environment',
+    image: '/images/project-jumeirah.jpg',
+    description: 'Palms and layered shade-loving planting along a villa boundary wall.',
   },
   {
     id: 'proj-3',
-    title: 'Edible Kitchen Garden & Raised Pods',
+    title: 'Side Garden Planters',
     location: 'Tilal Al Ghaf, Dubai',
     category: 'edible',
-    image: '/images/project-tilal-al-ghaf.png',
-    description:
-      'Four artisan timber raised beds yielding seasonal salads, culinary herbs, and heirloom vegetables for family culinary use.',
-    highlight: 'Over 18kg of organic produce harvested monthly',
+    image: '/images/project-tilal-al-ghaf.jpg',
+    description: 'A narrow side garden turned into a green walkway with planters along the wall.',
   },
   {
     id: 'proj-4',
-    title: 'VIP Residential Estate Landscape',
-    location: 'Abu Dhabi / Dubai Border',
+    title: 'Poolside Garden',
+    location: 'Abu Dhabi',
     category: 'villa',
-    image: '/images/project-aldar-abu-dhabi.png',
-    description:
-      'Grand scale architectural landscape framing expansive villa architecture with sculpted native and adapted desert flora.',
-    highlight: 'Signature hardscape and organic softscape integration',
+    image: '/images/project-aldar-abu-dhabi.jpg',
+    description: 'Palms and planting framing a pool and shaded seating area.',
   },
   {
     id: 'proj-5',
-    title: 'Pergola & Outdoor Living Space',
-    location: 'Villa Nova, Dubai',
-    category: 'transformation',
-    image: '/images/project-residential-pergola.png',
-    description:
-      'Seamless fusion of natural wood shade structure, outdoor dining ambience, and living boundary hedges.',
-    highlight: 'Transformed underutilised desert patio into daily living zone',
+    title: 'Stepping Stone Garden Path',
+    location: 'Dubai',
+    category: 'villa',
+    image: '/images/project-residential-pergola.jpg',
+    description: 'Stepping stones through turf with raised planters along the edge.',
   },
   {
     id: 'proj-6',
-    title: 'Arid Sand to Living Green Oasis',
-    location: 'Emirates Hills, Dubai',
-    category: 'transformation',
-    image: '/images/transformation-after.png',
-    description:
-      'Dramatic reclamation of bare construction sand into dense, multi-tiered organic garden through deep biological soil conditioning.',
-    highlight: 'Before & After transformation accomplished in 14 days',
-  },
-];
-
-export const TESTIMONIALS_DATA: TestimonialItem[] = [
-  {
-    id: 'test-1',
-    clientName: 'Tariq & Sarah Al-Mansoori',
-    location: 'Dubai Hills Estate',
-    quote:
-      'VIA Organic transformed our barren villa plot into an absolute paradise. Our children now pluck fresh sweet cherry tomatoes and mint every evening. Knowing everything is 100% chemical-free gives us total peace of mind.',
-    rating: 5,
-    serviceType: 'Gold Signature Package & Edible Garden',
-  },
-  {
-    id: 'test-2',
-    clientName: 'Marcus & Elena Vance',
-    location: 'Jumeirah Golf Estates',
-    quote:
-      'Our DEWA water bill had been astronomical with our previous landscaping contractor. Hafeez and the VIA Organic agronomy team re-engineered our irrigation with smart sensors and reconditioned the soil. Our water usage dropped 42% while our garden looks twice as lush.',
-    rating: 5,
-    serviceType: 'Smart Irrigation & Soil Conditioning',
-  },
-  {
-    id: 'test-3',
-    clientName: 'Dr. Fatima B.',
-    location: 'Tilal Al Ghaf',
-    quote:
-      'The attention to detail and botanical knowledge is unmatched in the UAE. From the initial 3D design to the weekly maintenance, their team is punctual, courteous, and deeply passionate about sustainable living.',
-    rating: 5,
-    serviceType: 'Annual Maintenance Contract (AMC)',
-  },
-  {
-    id: 'test-4',
-    clientName: 'Julian H.',
-    location: 'Palm Jumeirah',
-    quote:
-      'The quality of their handcrafted cedar raised beds and living compost is top-tier. Even through Dubai’s hottest months, our edible garden flourished with their summer shade canopy design.',
-    rating: 5,
-    serviceType: 'Organic Kitchen Garden Suite',
+    title: 'Lit Entrance Pathway',
+    location: 'Dubai',
+    category: 'villa',
+    image: '/images/entrance-pathway.jpg',
+    description: 'A villa entrance with paved steps, turf and low garden lighting.',
   },
 ];
 
@@ -384,24 +297,24 @@ export const FAQ_DATA: FaqItem[] = [
     id: 'faq-3',
     question: 'How much water will an organic garden consume compared to traditional lawns?',
     answer:
-      'Our precision subsurface drip networks and weather-adaptive smart Wi-Fi controllers typically reduce water consumption by 35% to 50% compared to traditional pop-up sprayers. Because our rich organic soil holds moisture like a sponge instead of letting it drain away through desert sand, every drop delivers maximum hydration to the roots.',
+      'Our precision subsurface drip networks and weather-adaptive smart Wi-Fi controllers use far less water than traditional pop-up sprayers. Because our rich organic soil holds moisture like a sponge instead of letting it drain away through desert sand, every drop delivers maximum hydration to the roots.',
   },
   {
     id: 'faq-4',
     question: 'How does the booking and quotation process work?',
     answer:
-      'Simply click "Get a free quote" or message us on WhatsApp with your location and villa type. Our senior agronomist will schedule a complimentary on-site survey anywhere in Dubai or Abu Dhabi. We assess your soil, sunlight, and irrigation pressure, and provide a transparent, tailored itemised proposal within 48 hours.',
+      'Simply click "Get a free quote" or message us on WhatsApp with your location and villa type. We will arrange a site visit to look at your soil, sunlight and irrigation, then send you a clear itemised proposal.',
   },
   {
     id: 'faq-5',
     question: 'What is included in the Annual Estate Maintenance Contract (AMC)?',
     answer:
-      'Our AMC provides white-glove regular visits (weekly or bi-weekly). It covers organic fertilisation, foliar nutrition, preventive biological pest spraying, drip system flushing and calibration, lawn aeration, aesthetic pruning, and seasonal crop rotation for edible gardens.',
+      'Our AMC provides regular visits (weekly or bi-weekly). It covers organic fertilisation, foliar nutrition, preventive biological pest spraying, drip system flushing and calibration, lawn aeration, aesthetic pruning, and seasonal crop rotation for edible gardens.',
   },
   {
     id: 'faq-6',
     question: 'Can you work with existing gardens that are struggling or dying?',
     answer:
-      'Yes, garden rehabilitation is one of our primary specialties. Most struggling UAE gardens suffer from compacted, salt-heavy desert sand or broken drippers. We conduct deep-core aeration, flush harmful salts, inject living microbial compost, and calibrate the hydrologic timers to bring lifeless gardens back to vibrant health within 3 to 4 weeks.',
+      'Yes, garden rehabilitation is one of our primary specialties. Most struggling UAE gardens suffer from compacted, salt-heavy desert sand or broken drippers. We conduct deep-core aeration, flush harmful salts, inject living microbial compost, and calibrate the hydrologic timers to bring struggling gardens back to health.',
   },
 ];

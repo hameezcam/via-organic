@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { label: 'Packages', href: '#packages' },
   { label: 'Products', href: '#products' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Testimonials', href: '#testimonials' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -36,12 +35,12 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4 text-center sm:text-left">
           <p className="flex items-center justify-center gap-1.5 font-medium tracking-wide">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Serving Dubai & Abu Dhabi Luxury Villas | 100% Chemical-Free Organic Landscaping</span>
+            <span>Organic home gardens & landscaping across the UAE</span>
           </p>
           <div className="flex items-center gap-4 text-xs">
             <a
               href={`tel:${SITE_CONFIG.phone.replace(/\s+/g, '')}`}
-              className="hover:text-emerald-300 transition-colors flex items-center gap-1"
+              className="hover:text-emerald-300 transition-colors flex items-center gap-1 py-1.5"
             >
               <Phone className="w-3 h-3 text-gold" />
               <span>{SITE_CONFIG.phone}</span>
@@ -51,7 +50,7 @@ export default function Header() {
               href={buildWhatsAppLink('Hello VIA Organic, I would like to schedule an on-site villa garden consultation.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-300 transition-colors flex items-center gap-1"
+              className="hover:text-emerald-300 transition-colors flex items-center gap-1 py-1.5"
             >
               <MessageSquare className="w-3 h-3 text-emerald-400" />
               <span>WhatsApp Us</span>

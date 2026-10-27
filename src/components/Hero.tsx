@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from '@/data/siteData';
 
 export default function Hero() {
   const whatsappQuoteUrl = buildWhatsAppLink(
-    'Hello VIA Organic, I would like to request a free quote for my villa garden in Dubai.'
+    'Hello VIA Organic, I would like to request a free quote for my garden in the UAE.'
   );
 
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-landscape.jpg"
-          alt="Lush luxury villa garden landscaped organically by VIA Organic in Dubai"
+          alt="Lush green garden with hedges and trees"
           fill
           priority
           sizes="100vw"
@@ -30,18 +30,18 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/80 border border-sand/30 backdrop-blur-md mb-6 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-gold animate-spin-slow" />
           <span className="text-xs sm:text-sm font-medium tracking-wide text-sand uppercase">
-            Bespoke Organic Landscaping & Garden Artisans • Dubai & Abu Dhabi
+            Organic Home Gardens & Landscaping • UAE
           </span>
         </div>
 
         {/* 1. Bold One-Line Promise */}
         <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white max-w-4xl leading-[1.12] mb-6 drop-shadow-sm">
-          Living Landscapes, Crafted Organically for Dubai&apos;s Finest Homes.
+          Organic Gardens for UAE Villas and Apartments.
         </h1>
 
         {/* Short Subline */}
         <p className="text-base sm:text-xl text-sand/90 max-w-2xl font-light leading-relaxed mb-8 sm:mb-10">
-          We transform arid villa grounds into lush, chemical-free sanctuaries and productive kitchen gardens using living soil science and intelligent water curation.
+          We design, plant and look after chemical-free gardens, from balcony herb systems to villa vegetable gardens and landscaping, backed by a decade of organic farming.
         </p>
 
         {/* Two Required CTA Buttons */}
@@ -71,15 +71,15 @@ export default function Hero() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 w-full max-w-3xl pt-6 border-t border-sand/20 text-xs sm:text-sm text-sand/80">
           <div className="flex items-center justify-center gap-2 py-1">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>100% Non-Toxic & Child-Safe</span>
+            <span>Chemical-Free Organic Methods</span>
           </div>
           <div className="flex items-center justify-center gap-2 py-1">
             <Droplets className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Up to 50% Water Reduction</span>
+            <span>Water-Wise Drip Irrigation</span>
           </div>
           <div className="flex items-center justify-center gap-2 py-1">
             <Sparkles className="w-4 h-4 text-gold shrink-0" />
-            <span>10+ Years Agronomy Expertise</span>
+            <span>Organic Farming Since 2015</span>
           </div>
         </div>
       </div>

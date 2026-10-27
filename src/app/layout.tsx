@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description:
-    "Dubai's premier organic landscaping, bespoke villa garden design, smart water-efficient irrigation, and living kitchen garden artisans. 100% chemical-free natural living landscapes across the UAE.",
+    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000, drip irrigation, maintenance and organic products from VIA Group farms.",
   keywords: [
     "organic landscaping dubai",
     "villa garden design dubai",
@@ -44,7 +44,6 @@ export const metadata: Metadata = {
     "landscape maintenance dubai amc",
     "living soil conditioner dubai",
     "via organic",
-    "hafeez cambal",
   ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
@@ -55,17 +54,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VIA Organic | Organic Landscaping & Garden Design Dubai",
     description:
-      "Transforming Spaces into Living Landscapes. Bespoke villa landscaping, chemical-free kitchen gardens, and sustainable smart irrigation in Dubai & Abu Dhabi.",
+      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000.",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_AE",
     type: "website",
     images: [
       {
-        url: "/images/hero-landscape.jpg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "VIA Organic Landscaping Dubai Luxury Villa Garden",
+        alt: "Lush green garden by VIA Organic",
       },
     ],
   },
@@ -73,8 +72,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VIA Organic | Organic Landscaping & Garden Design Dubai",
     description:
-      "Transforming Dubai villas with 100% chemical-free organic landscaping, edible gardens & water-wise irrigation.",
-    images: ["/images/hero-landscape.jpg"],
+      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE.",
+    images: ["/images/og-image.jpg"],
   },
   icons: {
     icon: "/images/icon.png",
@@ -99,46 +98,24 @@ const structuredData = {
   "@type": "HomeAndConstructionBusiness",
   name: SITE_CONFIG.name,
   alternateName: SITE_CONFIG.shortName,
-  image: `${SITE_CONFIG.url}/images/hero-landscape.jpg`,
+  image: `${SITE_CONFIG.url}/images/og-image.jpg`,
   logo: `${SITE_CONFIG.url}/images/logo.png`,
   url: SITE_CONFIG.url,
   telephone: SITE_CONFIG.phone,
   email: SITE_CONFIG.email,
-  priceRange: "AED 3,499 - 25,000+",
+  priceRange: "AED 1,000 - 3,800",
   address: {
     "@type": "PostalAddress",
     streetAddress: SITE_CONFIG.address.street,
     addressLocality: SITE_CONFIG.address.city,
     addressRegion: SITE_CONFIG.address.emirate,
-    postalCode: SITE_CONFIG.address.postalCode,
     addressCountry: "AE",
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 25.1325,
-    longitude: 55.2343,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
-  ],
-  sameAs: [
-    SITE_CONFIG.instagram,
-    "https://viaorganic.ae",
-  ],
+  sameAs: [SITE_CONFIG.instagram],
   areaServed: [
     { "@type": "City", name: "Dubai" },
     { "@type": "City", name: "Abu Dhabi" },
-    { "@type": "AdministrativeArea", name: "Emirates Hills" },
-    { "@type": "AdministrativeArea", name: "Dubai Hills Estate" },
-    { "@type": "AdministrativeArea", name: "Jumeirah" },
-    { "@type": "AdministrativeArea", name: "Tilal Al Ghaf" },
-    { "@type": "AdministrativeArea", name: "Palm Jumeirah" },
-    { "@type": "AdministrativeArea", name: "Arabian Ranches" },
+    { "@type": "Country", name: "United Arab Emirates" },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -148,7 +125,7 @@ const structuredData = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Bespoke Villa Garden Design",
+          name: "Organic Home Garden Packages",
         },
       },
       {
@@ -162,7 +139,7 @@ const structuredData = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Smart Water & Precision Drip Irrigation",
+          name: "Drip Irrigation",
         },
       },
       {

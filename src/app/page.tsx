@@ -6,7 +6,6 @@ import Services from '@/components/Services';
 import Packages from '@/components/Packages';
 import Products from '@/components/Products';
 import Gallery from '@/components/Gallery';
-import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -28,17 +27,14 @@ export default function Home() {
         {/* 3. Services: Garden Design, Vegetable Gardens, Maintenance, Irrigation, Soil Care */}
         <Services />
 
-        {/* 4. Packages: Bronze, Silver, Gold (Most Popular), Platinum in AED */}
+        {/* 4. Packages: Bronze to Platinum in AED, for apartments and villas */}
         <Packages />
 
-        {/* 5. Products: Certified Organic Essentials */}
+        {/* 5. Products: VIA Group organic products */}
         <Products />
 
         {/* 6. Gallery: Masonry Project Grid & Instagram Link */}
         <Gallery />
-
-        {/* 7. Testimonials: Interactive Carousel */}
-        <Testimonials />
 
         {/* 8. FAQ: Interactive Accordion */}
         <Faq />
