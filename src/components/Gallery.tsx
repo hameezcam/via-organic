@@ -57,16 +57,14 @@ export default function Gallery() {
 
         {/* Masonry / Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {filteredProjects.map((project, idx) => {
-            const isTall = idx % 3 === 0;
-
+          {filteredProjects.map((project) => {
             return (
               <div
                 key={project.id}
-                className="group relative rounded-3xl overflow-hidden bg-white border border-sand/80 shadow-xs hover:shadow-2xl transition-all duration-300 flex flex-col"
+                className="group relative rounded-3xl overflow-hidden border border-sand/80 shadow-xs hover:shadow-2xl transition-all duration-300"
               >
                 {/* Photo */}
-                <div className={`relative w-full ${isTall ? 'h-80 sm:h-96' : 'h-72'} overflow-hidden`}>
+                <div className="relative w-full h-80 sm:h-96 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
