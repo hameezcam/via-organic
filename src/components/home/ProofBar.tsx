@@ -2,9 +2,9 @@ import React from 'react';
 
 const STATS = [
   { value: '2015', label: 'Farming organically since' },
-  { value: '1,750', label: 'Acres of VIA Group organic farms' },
-  { value: 'UAE-wide', label: 'Villas and apartments served' },
-  { value: 'Weekly', label: 'Visits from a farm consultant' },
+  { value: '1,750', label: 'Acres farmed by VIA Group' },
+  { value: '5', label: 'Services, from gardens to farms' },
+  { value: 'UAE-wide', label: 'Homes, farms and businesses' },
 ];
 
 export default function ProofBar() {
@@ -13,7 +13,7 @@ export default function ProofBar() {
       <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
         {STATS.map((stat) => (
           <div key={stat.label} className="flex flex-col-reverse text-center lg:text-left">
-            <dt className="text-sm text-sand/80">{stat.label}</dt>
+            <dt className="text-sm text-sand/85">{stat.label}</dt>
             <dd className="font-serif text-3xl sm:text-4xl font-bold text-white">{stat.value}</dd>
           </div>
         ))}
