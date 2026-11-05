@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useSyncExternalStore } from 'react';
 import { Phone, Mail, MapPin, CalendarClock, ExternalLink, CheckCircle, AlertCircle } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/Icons';
 import {
@@ -26,7 +26,13 @@ const FIELD_ORDER: (keyof EnquiryInput)[] = ['fullName', 'phone', 'service', 'lo
 const inputClass =
   'w-full px-4 py-3 rounded-xl bg-sand-light/50 border text-base focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/30 transition-colors';
 
+const noopSubscribe = () => () => {};
+
 export default function Contact() {
+  // False during server render and hydration. Keeps the button disabled until
+  // the form's script is ready, so an early tap can never submit the details
+  // into the page URL.
+  const ready = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const [form, setForm] = useState<EnquiryInput>({ fullName: '', phone: '', location: '', service: '', message: '' });
   const [errors, setErrors] = useState<EnquiryErrors>({});
   const [sentLink, setSentLink] = useState<string | null>(null);
@@ -188,7 +194,8 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base shadow-lg active:scale-[0.98] transition-all cursor-pointer"
+                disabled={!ready}
+                className="disabled:opacity-60 disabled:cursor-wait w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base shadow-lg active:scale-[0.98] transition-all cursor-pointer"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 <span>Continue to WhatsApp</span>

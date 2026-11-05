@@ -75,7 +75,7 @@ export default function Footer() {
             <ul className="space-y-1 text-sm text-sand/85">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="inline-block py-1 hover:text-gold transition-colors">
+                  <Link href={link.href} className="inline-block py-2 hover:text-gold transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -91,7 +91,7 @@ export default function Footer() {
             <ul className="space-y-1 text-sm text-sand/85">
               {SERVICES_DATA.map((service) => (
                 <li key={service.id}>
-                  <Link href={`/services/${service.id}`} className="inline-block py-1 hover:text-gold transition-colors">
+                  <Link href={`/services/${service.id}`} className="inline-block py-2 hover:text-gold transition-colors">
                     {service.title}
                   </Link>
                 </li>
@@ -113,13 +113,13 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-gold shrink-0" aria-hidden="true" />
-                <a href={SITE_CONFIG.phoneHref} className="inline-block py-1 hover:text-gold transition-colors">
+                <a href={SITE_CONFIG.phoneHref} className="inline-block py-2 hover:text-gold transition-colors">
                   {SITE_CONFIG.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-gold shrink-0" aria-hidden="true" />
-                <a href={`mailto:${SITE_CONFIG.email}`} className="inline-block py-1 hover:text-gold transition-colors break-all">
+                <a href={`mailto:${SITE_CONFIG.email}`} className="inline-block py-2 hover:text-gold transition-colors break-all">
                   {SITE_CONFIG.email}
                 </a>
               </div>

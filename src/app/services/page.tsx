@@ -45,7 +45,7 @@ export default function ServicesPage() {
               />
             </div>
             <div>
-              <p className="font-serif text-5xl font-bold text-sand-dark mb-2" aria-hidden="true">0{idx + 1}</p>
+              <p className="font-serif text-5xl font-bold text-sage mb-2" aria-hidden="true">0{idx + 1}</p>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-4">{service.title}</h2>
               <p className="text-lg text-charcoal-muted leading-relaxed mb-6">{service.shortDesc}</p>
               <ul className="space-y-3 mb-8">

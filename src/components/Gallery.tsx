@@ -11,6 +11,7 @@ export default function Gallery() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const lastTrigger = useRef<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const count = GALLERY_PROJECTS.length;
   const active = activeIndex === null ? null : GALLERY_PROJECTS[activeIndex];
@@ -29,7 +30,10 @@ export default function Gallery() {
   // focus trapping, the Escape key and the backdrop.
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (activeIndex !== null && dialog && !dialog.open) dialog.showModal();
+    if (activeIndex !== null && dialog && !dialog.open) {
+      dialog.showModal();
+      closeRef.current?.focus();
+    }
   }, [activeIndex]);
 
   const handleClose = () => {
@@ -168,8 +172,8 @@ export default function Gallery() {
               </button>
               <button
                 type="button"
+                ref={closeRef}
                 onClick={close}
-                autoFocus
                 className="absolute top-2 right-2 w-11 h-11 rounded-full bg-forest-dark/80 hover:bg-forest flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 aria-label="Close photo"
               >

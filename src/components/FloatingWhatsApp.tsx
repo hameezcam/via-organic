@@ -15,7 +15,8 @@ export default function FloatingWhatsApp() {
   const waUrl = buildWhatsAppLink(service?.whatsappMessage ?? GENERAL_WHATSAPP_MESSAGE);
 
   return (
-    <div
+    <aside
+      aria-label="WhatsApp chat"
       className="fixed z-30 flex items-center gap-3 right-4 sm:right-6"
       style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
     >
@@ -43,6 +44,6 @@ export default function FloatingWhatsApp() {
       >
         <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
-    </div>
+    </aside>
   );
 }

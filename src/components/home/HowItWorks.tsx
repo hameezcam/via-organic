@@ -45,7 +45,7 @@ export default function HowItWorks() {
                 <span className="w-12 h-12 rounded-2xl bg-forest text-gold flex items-center justify-center" aria-hidden="true">
                   <step.icon className="w-6 h-6" />
                 </span>
-                <span className="font-serif text-4xl font-bold text-sand-dark" aria-hidden="true">0{idx + 1}</span>
+                <span className="font-serif text-4xl font-bold text-sage" aria-hidden="true">0{idx + 1}</span>
               </div>
               <h3 className="font-serif text-2xl font-bold text-forest mb-2">{step.title}</h3>
               <p className="text-charcoal-muted leading-relaxed mb-5">{step.text}</p>

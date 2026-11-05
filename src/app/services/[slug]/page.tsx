@@ -111,7 +111,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </ul>
           </div>
 
-          <aside className="lg:col-span-2" aria-labelledby="included-heading">
+          <div className="lg:col-span-2">
             <div className="rounded-3xl bg-forest text-sand-light p-8 lg:sticky lg:top-28">
               <h2 id="included-heading" className="font-serif text-2xl font-bold text-white mb-5">
                 What&apos;s included
@@ -135,7 +135,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               </a>
               <p className="mt-3 text-xs text-sand/80 text-center">Opens WhatsApp with a message you can edit before sending.</p>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 
@@ -166,7 +166,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <ol className={`grid grid-cols-1 sm:grid-cols-2 ${service.process.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
             {service.process.map((step, idx) => (
               <li key={step.title} className="rounded-3xl bg-white border border-sand p-7">
-                <p className="font-serif text-4xl font-bold text-sand-dark mb-3" aria-hidden="true">0{idx + 1}</p>
+                <p className="font-serif text-4xl font-bold text-sage mb-3" aria-hidden="true">0{idx + 1}</p>
                 <h3 className="font-serif text-xl font-bold text-forest mb-2">
                   <span className="sr-only">Step {idx + 1}: </span>
                   {step.title}

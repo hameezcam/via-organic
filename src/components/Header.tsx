@@ -55,7 +55,7 @@ export default function Header() {
   return (
     <>
       {/* Top Notification Bar */}
-      <div className="bg-forest-dark text-sand-light text-xs py-2 px-4 border-b border-forest/30">
+      <section aria-label="Quick contact" className="bg-forest-dark text-sand-light text-xs py-1 px-4 border-b border-forest/30">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4 text-center sm:text-left">
           <p className="flex items-center justify-center gap-1.5 font-medium tracking-wide">
             <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
@@ -81,7 +81,7 @@ export default function Header() {
             </a>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Sticky Header */}
       <header
