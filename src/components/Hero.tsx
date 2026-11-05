@@ -1,12 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MessageSquare, ArrowRight, Leaf, Droplets, Sprout } from 'lucide-react';
+import { ArrowRight, Home, Sprout, Tractor } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/Icons';
 import { buildWhatsAppLink } from '@/data/siteData';
 
 export default function Hero() {
   const whatsappQuoteUrl = buildWhatsAppLink(
-    'Hello VIA Organic, I would like to request a free quote for my garden in the UAE.'
+    'Hello VIA Organic, I would like a free quote for a garden or farm project in the UAE.'
   );
 
   return (
@@ -19,12 +20,12 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-forest-dark via-forest-dark/75 to-forest-dark/10" />
+      <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-forest-dark via-forest-dark/80 to-forest-dark/10" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 sm:py-24">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-20 sm:py-24">
         <div className="max-w-2xl">
           <p className="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/70 border border-sand/30 backdrop-blur-md mb-6 text-sm font-medium tracking-wide text-sand">
-            <Leaf className="w-4 h-4 text-gold" />
+            <Sprout className="w-4 h-4 text-gold" aria-hidden="true" />
             Landscaping &amp; organic agriculture • UAE
           </p>
 
@@ -32,8 +33,8 @@ export default function Hero() {
             Living landscapes. Organic farms. Fresh food.
           </h1>
 
-          <p className="text-base sm:text-xl text-sand/90 font-light leading-relaxed mb-8 max-w-xl">
-            Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetables, all grown the organic way by a team with a decade of farming behind it.
+          <p className="text-lg sm:text-xl text-sand/90 leading-relaxed mb-8 max-w-xl">
+            From villa gardens and balconies to commercial farms and greenhouse systems, we grow the organic way, backed by VIA Group’s farming experience since 2015.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -41,29 +42,29 @@ export default function Hero() {
               href={whatsappQuoteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-base shadow-lg transition-colors"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base shadow-lg transition-colors"
             >
-              <MessageSquare className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               <span>Get a Free Quote</span>
             </a>
             <Link
-              href="/gallery"
+              href="/services"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sand-light/10 hover:bg-sand-light/20 text-sand border border-sand/40 font-medium text-base backdrop-blur-md transition-colors"
             >
-              <span>See Our Work</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span>Explore Our Services</span>
+              <ArrowRight className="w-4 h-4 text-gold" aria-hidden="true" />
             </Link>
           </div>
 
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-sand/90">
+          <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm text-sand/90">
             <li className="flex items-center gap-2">
-              <Sprout className="w-4 h-4 text-emerald-400" /> Chemical-free methods
+              <Home className="w-4 h-4 text-emerald-400" aria-hidden="true" /> Gardens for villas and apartments
             </li>
             <li className="flex items-center gap-2">
-              <Droplets className="w-4 h-4 text-emerald-400" /> Water-wise drip irrigation
+              <Tractor className="w-4 h-4 text-emerald-400" aria-hidden="true" /> Commercial and greenhouse farming
             </li>
             <li className="flex items-center gap-2">
-              <Leaf className="w-4 h-4 text-emerald-400" /> Weekly care visits
+              <Sprout className="w-4 h-4 text-emerald-400" aria-hidden="true" /> Chemical-free methods
             </li>
           </ul>
         </div>

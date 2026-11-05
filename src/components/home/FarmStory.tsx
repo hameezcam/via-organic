@@ -15,14 +15,14 @@ export default function FarmStory() {
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-5">
             Real farmers, not just landscapers
           </h2>
-          <p className="text-lg text-sand/85 font-light leading-relaxed mb-6">
-            VIA Organic is part of the VIA Group, which has farmed organically in Sri Lanka since 2015 across 1,750 acres of mixed crops. We bring that same know-how to gardens in the UAE.
+          <p className="text-lg text-sand/85 leading-relaxed mb-6">
+            VIA Organic is part of the VIA Group, which has farmed organically in Sri Lanka since 2015 across 1,750 acres of mixed crops. We bring that same know-how to gardens, farms and growing projects in the UAE.
           </p>
           <Link
             href="/about"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-sand text-forest-dark hover:bg-sand-dark font-semibold transition-colors"
           >
-            Our story <ArrowRight className="w-4 h-4" />
+            Our story <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
 

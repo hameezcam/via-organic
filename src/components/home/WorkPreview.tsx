@@ -16,7 +16,7 @@ export default function WorkPreview() {
         <SectionIntro
           eyebrow="Our work"
           title="Real gardens across the UAE"
-          intro="A few of the villa gardens we have planted and look after."
+          intro="A selection of villa gardens our team has planted in Dubai and Abu Dhabi."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:h-[620px]">
@@ -27,7 +27,7 @@ export default function WorkPreview() {
             >
               <Image
                 src={project.image}
-                alt={`${project.title}: ${project.description}`}
+                alt={project.alt}
                 fill
                 sizes={idx === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 640px) 100vw, 25vw'}
                 className="object-cover"
@@ -35,7 +35,7 @@ export default function WorkPreview() {
               <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-forest-dark/90 to-transparent text-white">
                 <span className="block font-serif text-xl font-bold">{project.title}</span>
                 <span className="flex items-center gap-1 text-sm text-sand/90">
-                  <MapPin className="w-3.5 h-3.5 text-gold" /> {project.location}
+                  <MapPin className="w-3.5 h-3.5 text-gold" aria-hidden="true" /> {project.location}
                 </span>
               </figcaption>
             </figure>
@@ -47,7 +47,7 @@ export default function WorkPreview() {
             href="/gallery"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-sand-light font-semibold transition-colors"
           >
-            See the full gallery <ArrowRight className="w-4 h-4" />
+            See the full gallery <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
       </div>
