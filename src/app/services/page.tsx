@@ -9,7 +9,7 @@ import { SERVICES_DATA, buildWhatsAppLink } from '@/data/siteData';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Organic garden design and landscaping, vegetable and kitchen gardens, drip irrigation, soil care and garden maintenance for villas and apartments in the UAE.',
+    'Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetable distribution in the UAE.',
   alternates: { canonical: '/services' },
 };
 
@@ -18,8 +18,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Everything your garden needs, done organically"
-        intro="Design, planting, irrigation and ongoing care from one team that farms for a living."
+        title="Five ways we grow, all of them organic"
+        intro="From villa gardens to commercial farms and fresh produce, one team that farms for a living."
         image="/images/project-jumeirah.jpg"
         imageAlt="Palms and layered planting along a villa wall in Jumeirah"
       />

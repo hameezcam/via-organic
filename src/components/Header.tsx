@@ -29,7 +29,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4 text-center sm:text-left">
           <p className="flex items-center justify-center gap-1.5 font-medium tracking-wide">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Organic home gardens & landscaping across the UAE</span>
+            <span>Landscaping &amp; organic agriculture across the UAE</span>
           </p>
           <div className="flex items-center gap-4 text-xs">
             <a
@@ -79,7 +79,7 @@ export default function Header() {
                 VIA ORGANIC
               </span>
               <span className="text-xs uppercase tracking-widest text-charcoal-muted -mt-1 font-medium">
-                Organic Gardens UAE
+                Organic Agriculture UAE
               </span>
             </div>
           </Link>

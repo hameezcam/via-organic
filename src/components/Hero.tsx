@@ -25,15 +25,15 @@ export default function Hero() {
         <div className="max-w-2xl">
           <p className="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/70 border border-sand/30 backdrop-blur-md mb-6 text-sm font-medium tracking-wide text-sand">
             <Leaf className="w-4 h-4 text-gold" />
-            Organic home gardens & landscaping • UAE
+            Landscaping &amp; organic agriculture • UAE
           </p>
 
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.05] mb-6">
-            Grow a garden that grows your food.
+            Living landscapes. Organic farms. Fresh food.
           </h1>
 
           <p className="text-base sm:text-xl text-sand/90 font-light leading-relaxed mb-8 max-w-xl">
-            We design, plant and care for chemical-free gardens for villas and apartments, backed by a decade of organic farming.
+            Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetables, all grown the organic way by a team with a decade of farming behind it.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-10">

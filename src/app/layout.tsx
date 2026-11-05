@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { SITE_CONFIG } from "@/data/siteData";
+import { SERVICES_DATA, SITE_CONFIG } from "@/data/siteData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -30,11 +30,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.shortName} | Organic Home Gardens & Landscaping in Dubai`,
+    default: `${SITE_CONFIG.shortName} | Landscaping & Organic Agriculture in the UAE`,
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description:
-    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE, plus drip irrigation, soil care and garden maintenance.",
+    "Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetable distribution in the UAE, from VIA Group's organic farming team.",
   keywords: [
     "organic landscaping dubai",
     "villa garden design dubai",
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "VIA Organic | Organic Home Gardens & Landscaping in Dubai",
+    title: "VIA Organic | Landscaping & Organic Agriculture in the UAE",
     description:
-      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE.",
+      "Landscaping, commercial farming, advanced agriculture, farm management and fresh vegetable distribution in the UAE.",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_AE",
@@ -73,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VIA Organic | Organic Home Gardens & Landscaping in Dubai",
+    title: "VIA Organic | Landscaping & Organic Agriculture in the UAE",
     description:
-      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE.",
+      "Landscaping, commercial farming, advanced agriculture, farm management and fresh vegetable distribution in the UAE.",
     images: ["/images/og-image.jpg"],
   },
   icons: {
@@ -121,44 +121,11 @@ const structuredData = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Organic Landscaping Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Organic Home Gardens",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Organic Vegetable & Kitchen Gardens",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Drip Irrigation",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Living Soil Care & Organic Regeneration",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Annual Estate Maintenance Contract (AMC)",
-        },
-      },
-    ],
+    name: "VIA Organic Services",
+    itemListElement: SERVICES_DATA.map((service) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: service.title },
+    })),
   },
 };
 

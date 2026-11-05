@@ -34,7 +34,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm text-sand/80 leading-relaxed font-light max-w-md pt-2">
-              Transforming Spaces. Creating Living Landscapes. Organic home gardens, landscaping and garden care for villas and apartments across the UAE, from a VIA Group company farming organically since 2015.
+              Transforming Spaces. Creating Living Landscapes. Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetable distribution across the UAE, from a VIA Group company farming organically since 2015.
             </p>
 
             {/* Social Icons */}
