@@ -91,7 +91,7 @@ export default function Footer() {
             <ul className="space-y-1 text-sm text-sand/80 font-light">
               {SERVICES_DATA.map((service) => (
                 <li key={service.id}>
-                  <Link href={`/services#${service.id}`} className="inline-block py-1 hover:text-gold transition-colors">
+                  <Link href={`/services/${service.id}`} className="inline-block py-1 hover:text-gold transition-colors">
                     {service.title}
                   </Link>
                 </li>

@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { Check, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Check, MessageSquare } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
 import { SERVICES_DATA, buildWhatsAppLink } from '@/data/siteData';
@@ -52,15 +53,24 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
+              <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href={`/services/${service.id}`}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-forest hover:bg-forest-light text-sand-light font-semibold transition-colors"
+              >
+                View full details
+                <ArrowRight className="w-4 h-4 text-gold" />
+              </Link>
               <a
                 href={buildWhatsAppLink(service.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-forest hover:bg-forest-light text-sand-light font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-sand/40 font-semibold transition-colors"
               >
-                <MessageSquare className="w-4 h-4 text-emerald-300" />
-                Ask about this on WhatsApp
+                <MessageSquare className="w-4 h-4" />
+                Ask on WhatsApp
               </a>
+              </div>
             </div>
           </section>
         ))}

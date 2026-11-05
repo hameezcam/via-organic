@@ -3,15 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, Phone, MessageSquare, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, MessageSquare, ArrowRight, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { NAV_LINKS, SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
+import { NAV_LINKS, SERVICES_DATA, SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
 
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    // Close menus after navigating to a new page.
+    setLastPath(pathname);
+    setServicesOpen(false);
+    setMobileMenuOpen(false);
+  }
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
   useEffect(() => {
@@ -86,18 +94,75 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav aria-label="Main" className="hidden lg:flex items-center space-x-7">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`text-sm font-medium transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-forest after:transition-transform after:origin-left hover:after:scale-x-100 ${
-                  isActive(link.href) ? 'text-forest after:scale-x-100' : 'text-charcoal hover:text-forest-light after:scale-x-0'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const linkClass = `text-sm font-medium transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-forest after:transition-transform after:origin-left hover:after:scale-x-100 ${
+                isActive(link.href) ? 'text-forest after:scale-x-100' : 'text-charcoal hover:text-forest-light after:scale-x-0'
+              }`;
+              if (link.href !== '/services') {
+                return (
+                  <Link key={link.label} href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} className={linkClass}>
+                    {link.label}
+                  </Link>
+                );
+              }
+              return (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') setServicesOpen(false);
+                  }}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false);
+                  }}
+                >
+                  <div className="flex items-center gap-1">
+                    <Link href={link.href} aria-current={pathname === '/services' ? 'page' : undefined} className={linkClass}>
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setServicesOpen((open) => !open)}
+                      aria-expanded={servicesOpen}
+                      aria-controls="services-menu"
+                      aria-label="Show services"
+                      className="p-1 rounded text-charcoal hover:text-forest focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                  </div>
+                  {servicesOpen && (
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-80">
+                      <ul id="services-menu" className="rounded-2xl bg-white border border-sand shadow-xl p-2">
+                        {SERVICES_DATA.map((service) => (
+                          <li key={service.id}>
+                            <Link
+                              href={`/services/${service.id}`}
+                              aria-current={pathname === `/services/${service.id}` ? 'page' : undefined}
+                              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors ${
+                                pathname === `/services/${service.id}` ? 'bg-sand-light text-forest' : 'text-charcoal hover:bg-sand-light hover:text-forest'
+                              }`}
+                            >
+                              <span className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
+                                <Image src={service.image} alt="" fill sizes="40px" className="object-cover" />
+                              </span>
+                              <span className="text-sm font-medium">{service.title}</span>
+                            </Link>
+                          </li>
+                        ))}
+                        <li className="border-t border-sand mt-1 pt-1">
+                          <Link href="/services" className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-forest hover:bg-sand-light">
+                            All services <ArrowRight className="w-4 h-4 text-gold" />
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA Button */}
@@ -132,17 +197,36 @@ export default function Header() {
           <div className="lg:hidden bg-cream border-b border-sand shadow-xl px-4 pt-4 pb-6 space-y-3 animate-in fade-in slide-in-from-top-4 duration-200">
             <nav aria-label="Mobile" className="flex flex-col space-y-1">
               {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-current={isActive(link.href) ? 'page' : undefined}
-                  className={`px-3 py-3 rounded-md text-base font-medium transition-colors ${
-                    isActive(link.href) ? 'bg-sand/60 text-forest' : 'text-charcoal hover:text-forest hover:bg-sand/40'
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                <React.Fragment key={link.label}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    aria-current={(link.href === '/services' ? pathname === '/services' : isActive(link.href)) ? 'page' : undefined}
+                    className={`px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                      isActive(link.href) ? 'bg-sand/60 text-forest' : 'text-charcoal hover:text-forest hover:bg-sand/40'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                  {link.href === '/services' && (
+                    <ul className="ml-4 pl-3 border-l-2 border-sand">
+                      {SERVICES_DATA.map((service) => (
+                        <li key={service.id}>
+                          <Link
+                            href={`/services/${service.id}`}
+                            onClick={() => setMobileMenuOpen(false)}
+                            aria-current={pathname === `/services/${service.id}` ? 'page' : undefined}
+                            className={`block px-3 py-2.5 rounded-md text-sm transition-colors ${
+                              pathname === `/services/${service.id}` ? 'text-forest font-semibold' : 'text-charcoal-muted hover:text-forest'
+                            }`}
+                          >
+                            {service.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </React.Fragment>
               ))}
             </nav>
             <div className="pt-3 border-t border-sand flex flex-col gap-2.5">

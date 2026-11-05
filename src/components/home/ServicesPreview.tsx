@@ -19,7 +19,7 @@ export default function ServicesPreview() {
           {SERVICES_DATA.map((service) => (
             <Link
               key={service.id}
-              href={`/services#${service.id}`}
+              href={`/services/${service.id}`}
               className="group relative h-72 lg:h-96 rounded-3xl overflow-hidden bg-forest-dark shadow-sm hover:shadow-xl transition-shadow"
             >
               <Image

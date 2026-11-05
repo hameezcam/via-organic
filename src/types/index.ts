@@ -6,6 +6,11 @@ export interface ServiceItem {
   image: string;
   features: string[];
   whatsappMessage: string;
+  /** Detail page content */
+  overview: string[];
+  audience: string[];
+  process: { title: string; text: string }[];
+  photos: { src: string; alt: string }[];
 }
 
 export interface GalleryProject {

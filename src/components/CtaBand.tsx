@@ -11,8 +11,8 @@ interface CtaBandProps {
 }
 
 export default function CtaBand({
-  title = 'Ready for a garden you can actually grow food in?',
-  text = 'Tell us about your balcony or villa garden on WhatsApp. We will arrange a site visit and send you a clear quote.',
+  title = 'Ready to start growing?',
+  text = 'Tell us about your garden, farm or project on WhatsApp. We will arrange a site visit and send you a clear quote.',
   message = 'Hello VIA Organic, I would like a quote for my garden.',
 }: CtaBandProps) {
   return (
