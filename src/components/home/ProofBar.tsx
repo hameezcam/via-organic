@@ -3,7 +3,7 @@ import React from 'react';
 const STATS = [
   { value: '2015', label: 'Farming organically since' },
   { value: '1,750', label: 'Acres of VIA Group organic farms' },
-  { value: 'AED 1,000', label: 'Garden packages from' },
+  { value: 'UAE-wide', label: 'Villas and apartments served' },
   { value: 'Weekly', label: 'Visits from a farm consultant' },
 ];
 

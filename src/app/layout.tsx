@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description:
-    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000, drip irrigation and garden maintenance.",
+    "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE, plus drip irrigation, soil care and garden maintenance.",
   keywords: [
     "organic landscaping dubai",
     "villa garden design dubai",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VIA Organic | Organic Home Gardens & Landscaping in Dubai",
     description:
-      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE. Garden packages from AED 1,000.",
+      "Organic home gardens and landscaping for villas and apartments in Dubai and the UAE.",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_AE",
@@ -106,7 +106,6 @@ const structuredData = {
   url: SITE_CONFIG.url,
   telephone: SITE_CONFIG.phone,
   email: SITE_CONFIG.email,
-  priceRange: "AED 1,000 - 3,800",
   address: {
     "@type": "PostalAddress",
     streetAddress: SITE_CONFIG.address.street,
@@ -128,7 +127,7 @@ const structuredData = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Organic Home Garden Packages",
+          name: "Organic Home Gardens",
         },
       },
       {

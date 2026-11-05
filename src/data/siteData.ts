@@ -1,6 +1,5 @@
 import {
   ServiceItem,
-  PricingPackage,
   GalleryProject,
   FaqItem,
 } from '@/types';
@@ -37,7 +36,6 @@ export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Packages', href: '/packages' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
@@ -136,86 +134,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Seasonal crop rotation & aesthetic pruning',
     ],
     whatsappMessage:
-      'Hello VIA Organic, please share quotation details for your Annual Estate Maintenance (AMC) packages.',
+      'Hello VIA Organic, please share quotation details for your garden maintenance (AMC) plans.',
   },
 ];
-
-export const PACKAGES_DATA: PricingPackage[] = [
-  {
-    id: 'apartment-bronze',
-    space: 'apartment',
-    name: 'Bronze',
-    priceAed: 1200,
-    recommendedFor: 'Balconies from 1 sqm',
-    features: ['40 herbs', '40 green leafy plants', 'Organic 2 aeroponic system'],
-  },
-  {
-    id: 'apartment-silver',
-    space: 'apartment',
-    name: 'Silver',
-    priceAed: 1800,
-    recommendedFor: 'Balconies from 2 sqm',
-    features: ['50 herbs', '70 green leafy plants', 'Organic 3 aeroponic system'],
-  },
-  {
-    id: 'apartment-gold',
-    space: 'apartment',
-    name: 'Gold',
-    priceAed: 2300,
-    recommendedFor: 'Balconies from 3 sqm',
-    features: ['70 herbs', '90 green leafy plants', 'Organic 4 aeroponic system'],
-  },
-  {
-    id: 'apartment-platinum',
-    space: 'apartment',
-    name: 'Platinum',
-    priceAed: 3400,
-    recommendedFor: 'Balconies from 4 sqm',
-    features: ['100 herbs', '140 green leafy plants', 'Organic 6 aeroponic system'],
-  },
-  {
-    id: 'villa-bronze',
-    space: 'villa',
-    name: 'Bronze',
-    priceAed: 1000,
-    recommendedFor: 'Outdoor space from 6 sqm',
-    features: ['50 vegetable plants', '15 herbs', '20 green leafy plants'],
-  },
-  {
-    id: 'villa-silver',
-    space: 'villa',
-    name: 'Silver',
-    priceAed: 1900,
-    recommendedFor: 'Outdoor space from 12 sqm',
-    features: ['90 vegetable plants', '30 herbs', '40 green leafy plants'],
-  },
-  {
-    id: 'villa-gold',
-    space: 'villa',
-    name: 'Gold',
-    priceAed: 2900,
-    recommendedFor: 'Outdoor space from 18 sqm',
-    features: ['130 vegetable plants', '60 herbs', '80 green leafy plants'],
-  },
-  {
-    id: 'villa-platinum',
-    space: 'villa',
-    name: 'Platinum',
-    priceAed: 3800,
-    recommendedFor: 'Outdoor space from 24 sqm',
-    features: ['180 vegetable plants', '90 herbs', '120 green leafy plants'],
-  },
-];
-
-export const PACKAGE_SPACES = [
-  { key: 'apartment', label: 'Apartment balcony' },
-  { key: 'villa', label: 'Villa garden' },
-] as const;
-
-export function packageWhatsAppMessage(pkg: PricingPackage): string {
-  const space = PACKAGE_SPACES.find((s) => s.key === pkg.space)?.label ?? '';
-  return `Hello VIA Organic, I am interested in the ${space} ${pkg.name} package (AED ${pkg.priceAed.toLocaleString('en-AE')}). Please let me know your earliest site visit availability.`;
-}
 
 export const GALLERY_PROJECTS: GalleryProject[] = [
   {

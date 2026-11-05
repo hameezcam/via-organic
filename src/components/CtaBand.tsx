@@ -34,10 +34,10 @@ export default function CtaBand({
               <span>Get a Free Quote</span>
             </a>
             <Link
-              href="/packages"
+              href="/gallery"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-sand/40 text-sand hover:bg-sand-light/10 font-medium transition-colors"
             >
-              <span>See Packages</span>
+              <span>See Our Work</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
