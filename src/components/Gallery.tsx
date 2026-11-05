@@ -1,84 +1,205 @@
-import React from 'react';
-import Image from 'next/image';
-import { MapPin, ExternalLink } from 'lucide-react';
-import { InstagramIcon } from '@/components/Icons';
-import { GALLERY_PROJECTS, SITE_CONFIG } from '@/data/siteData';
+'use client';
 
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight, ExternalLink, Expand, MapPin, X } from 'lucide-react';
+import { InstagramIcon, WhatsAppIcon } from '@/components/Icons';
+import { GALLERY_PROJECTS, SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
 
 export default function Gallery() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const lastTrigger = useRef<number | null>(null);
+
+  const count = GALLERY_PROJECTS.length;
+  const active = activeIndex === null ? null : GALLERY_PROJECTS[activeIndex];
+
+  const open = (index: number) => {
+    lastTrigger.current = index;
+    setActiveIndex(index);
+  };
+  const close = useCallback(() => dialogRef.current?.close(), []);
+  const step = useCallback(
+    (delta: number) => setActiveIndex((idx) => (idx === null ? idx : (idx + delta + count) % count)),
+    [count]
+  );
+
+  // Show the native modal dialog when a photo is chosen. The dialog handles
+  // focus trapping, the Escape key and the backdrop.
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (activeIndex !== null && dialog && !dialog.open) dialog.showModal();
+  }, [activeIndex]);
+
+  const handleClose = () => {
+    setActiveIndex(null);
+    const idx = lastTrigger.current;
+    if (idx !== null) triggerRefs.current[idx]?.focus();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      step(1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      step(-1);
+    }
+  };
+
   return (
-    <section className="py-16 sm:py-20 bg-cream text-charcoal">
+    <section className="py-16 sm:py-20 bg-cream text-charcoal" aria-labelledby="projects-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Masonry / Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {GALLERY_PROJECTS.map((project) => {
-            return (
-              <div
-                key={project.id}
-                className="group relative rounded-3xl overflow-hidden border border-sand/80 shadow-xs hover:shadow-2xl transition-all duration-300"
-              >
-                {/* Photo */}
-                <div className="relative w-full h-80 sm:h-96 overflow-hidden">
+        <h2 id="projects-heading" className="sr-only">
+          Garden projects
+        </h2>
+
+        {/* Masonry columns keep each photo's natural shape */}
+        <ul className="columns-1 sm:columns-2 lg:columns-3 gap-6 mb-16 [&>li]:mb-6">
+          {GALLERY_PROJECTS.map((project, idx) => (
+            <li key={project.id} className="break-inside-avoid">
+              <figure className="group rounded-3xl overflow-hidden border border-sand/80 bg-white shadow-xs hover:shadow-xl transition-shadow">
+                <button
+                  type="button"
+                  ref={(el) => {
+                    triggerRefs.current[idx] = el;
+                  }}
+                  onClick={() => open(idx)}
+                  className="relative block w-full cursor-zoom-in focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-gold"
+                  aria-label={`View larger photo: ${project.title}, ${project.location}`}
+                  aria-haspopup="dialog"
+                >
                   <Image
                     src={project.image}
-                    alt={`${project.title}: ${project.description}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    alt={project.alt}
+                    width={project.width}
+                    height={project.height}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    className="w-full h-auto group-hover:scale-[1.03] transition-transform duration-700 ease-out motion-reduce:transition-none"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-3 right-3 w-10 h-10 rounded-full bg-forest-dark/75 text-sand-light flex items-center justify-center opacity-90 group-hover:opacity-100"
+                  >
+                    <Expand className="w-4 h-4" />
+                  </span>
+                </button>
+                <figcaption className="p-5">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-forest mb-1">{project.title}</h3>
+                  <p className="flex items-center gap-1.5 text-sm font-medium text-forest-light mb-2">
+                    <MapPin className="w-3.5 h-3.5 text-gold" aria-hidden="true" />
+                    {project.location}
+                  </p>
+                  <p className="text-sm text-charcoal-muted leading-relaxed">{project.description}</p>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
 
-                  {/* Location Tag */}
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-forest-dark/80 backdrop-blur-md text-sand-light text-xs font-medium flex items-center gap-1.5 border border-white/10">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    <span>{project.location}</span>
-                  </div>
-
-                  {/* Content Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold mb-1.5 text-sand-light">
-                      {project.title}
-                    </h2>
-                    <p className="text-sm text-sand/90 line-clamp-2 font-light">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Link to Instagram */}
+        {/* Instagram */}
         <div className="p-8 sm:p-10 rounded-3xl bg-forest text-sand-light text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
           <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-forest-light/40 blur-2xl pointer-events-none" />
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="text-center sm:text-left">
-              <div className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-semibold mb-2">
+              <p className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-semibold mb-2">
                 <InstagramIcon className="w-4 h-4" />
-                <span>Follow Our Living Journey</span>
-              </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-1">
-                Explore More on Instagram: {SITE_CONFIG.instagramHandle}
-              </h2>
-              <p className="text-sand/80 text-xs sm:text-sm max-w-xl">
-                Garden reveals, harvests and organic gardening tips from our team in the UAE.
+                <span>Follow our work</span>
               </p>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-1">
+                More on Instagram: {SITE_CONFIG.instagramHandle}
+              </h2>
+              <p className="text-sand/85 text-sm max-w-xl">Recent gardens, harvests and updates from our team.</p>
             </div>
 
             <a
               href={SITE_CONFIG.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-sand hover:bg-sand-dark text-forest-dark font-semibold text-xs sm:text-sm shadow-md transition-all active:scale-95 shrink-0"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-sand hover:bg-sand-dark text-forest-dark font-semibold text-sm shadow-md transition-colors shrink-0"
             >
               <InstagramIcon className="w-4 h-4" />
-              <span>Visit @viaorganic</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Visit {SITE_CONFIG.instagramHandle}</span>
+              <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           </div>
         </div>
       </div>
+
+      {/* Lightbox */}
+      <dialog
+        ref={dialogRef}
+        onClose={handleClose}
+        onKeyDown={handleKeyDown}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) close();
+        }}
+        aria-labelledby="lightbox-title"
+        className="m-auto w-[min(100vw-1rem,72rem)] max-h-[calc(100dvh-1rem)] p-0 rounded-2xl bg-forest-dark text-sand-light backdrop:bg-black/80 overflow-hidden"
+      >
+        {active && activeIndex !== null && (
+          <div className="flex flex-col max-h-[calc(100dvh-1rem)]">
+            <div className="relative bg-black flex items-center justify-center min-h-0 grow">
+              <Image
+                key={active.id}
+                src={active.image}
+                alt={active.alt}
+                width={active.width}
+                height={active.height}
+                sizes="(max-width: 1200px) 100vw, 1150px"
+                className="w-auto h-auto max-w-full max-h-[calc(100dvh-13rem)] sm:max-h-[calc(100dvh-10rem)] object-contain"
+              />
+              <button
+                type="button"
+                onClick={() => step(-1)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-forest-dark/80 hover:bg-forest flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                aria-label="Previous photo"
+              >
+                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => step(1)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-forest-dark/80 hover:bg-forest flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                aria-label="Next photo"
+              >
+                <ChevronRight className="w-6 h-6" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={close}
+                autoFocus
+                className="absolute top-2 right-2 w-11 h-11 rounded-full bg-forest-dark/80 hover:bg-forest flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                aria-label="Close photo"
+              >
+                <X className="w-6 h-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h2 id="lightbox-title" className="font-serif text-xl sm:text-2xl font-bold text-white">
+                  {active.title}
+                </h2>
+                <p className="text-sm text-sand/85">
+                  {active.location} · Photo {activeIndex + 1} of {count}
+                </p>
+              </div>
+              <a
+                href={buildWhatsAppLink(
+                  `Hello VIA Organic, I saw the "${active.title}" project in your gallery and would like a quote for a similar garden.`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition-colors shrink-0"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                Ask about a garden like this
+              </a>
+            </div>
+          </div>
+        )}
+      </dialog>
     </section>
   );
 }
