@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { SERVICES_DATA, SITE_CONFIG } from "@/data/siteData";
+import { SITE_CONFIG } from "@/data/siteData";
+import { jsonLd, siteStructuredData } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -16,7 +17,7 @@ const cormorant = Cormorant_Garamond({
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -35,49 +36,18 @@ export const metadata: Metadata = {
   },
   description:
     "Landscaping, commercial farms, advanced agriculture, farm management and fresh vegetable distribution in the UAE, from VIA Group's organic farming team.",
-  keywords: [
-    "organic landscaping dubai",
-    "villa garden design dubai",
-    "organic vegetable garden uae",
-    "landscaping company dubai",
-    "smart irrigation dubai",
-    "dubai hills landscaping",
-    "jumeirah villa garden",
-    "chemical free gardening uae",
-    "landscape maintenance dubai amc",
-    "living soil conditioner dubai",
-    "via organic",
-  ],
+  applicationName: SITE_CONFIG.shortName,
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
-  alternates: {
-    canonical: "/",
-  },
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
-    title: "VIA Organic | Landscaping & Organic Agriculture in the UAE",
-    description:
-      "Landscaping, commercial farming, advanced agriculture, farm management and fresh vegetable distribution in the UAE.",
-    url: SITE_CONFIG.url,
-    siteName: SITE_CONFIG.name,
+    siteName: SITE_CONFIG.shortName,
     locale: "en_AE",
     type: "website",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Lush green garden by VIA Organic",
-      },
-    ],
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "A villa garden by VIA Organic" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "VIA Organic | Landscaping & Organic Agriculture in the UAE",
-    description:
-      "Landscaping, commercial farming, advanced agriculture, farm management and fresh vegetable distribution in the UAE.",
-    images: ["/images/og-image.jpg"],
-  },
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: "/images/icon.png",
     shortcut: "/images/icon.png",
@@ -96,39 +66,6 @@ export const metadata: Metadata = {
   },
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  name: SITE_CONFIG.name,
-  alternateName: SITE_CONFIG.shortName,
-  image: `${SITE_CONFIG.url}/images/og-image.jpg`,
-  logo: `${SITE_CONFIG.url}/images/logo.png`,
-  url: SITE_CONFIG.url,
-  telephone: SITE_CONFIG.phone,
-  email: SITE_CONFIG.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: SITE_CONFIG.address.street,
-    addressLocality: SITE_CONFIG.address.city,
-    addressRegion: SITE_CONFIG.address.emirate,
-    addressCountry: "AE",
-  },
-  sameAs: [SITE_CONFIG.instagram],
-  areaServed: [
-    { "@type": "City", name: "Dubai" },
-    { "@type": "City", name: "Abu Dhabi" },
-    { "@type": "Country", name: "United Arab Emirates" },
-  ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "VIA Organic Services",
-    itemListElement: SERVICES_DATA.map((service) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: service.title },
-    })),
-  },
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -142,7 +79,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={jsonLd(siteStructuredData())}
         />
       </head>
       <body
