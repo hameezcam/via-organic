@@ -1,42 +1,47 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageSquare, X } from 'lucide-react';
-import { buildWhatsAppLink } from '@/data/siteData';
+import { usePathname } from 'next/navigation';
+import { X } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/Icons';
+import { GENERAL_WHATSAPP_MESSAGE, SERVICES_DATA, buildWhatsAppLink } from '@/data/siteData';
 
 export default function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(true);
+  const pathname = usePathname();
 
-  const defaultMessage =
-    'Hello VIA Organic, I would like to ask about a garden for my home.';
-  const waUrl = buildWhatsAppLink(defaultMessage);
+  // On a service page, start the chat about that service.
+  const service = SERVICES_DATA.find((item) => pathname === `/services/${item.id}`);
+  const waUrl = buildWhatsAppLink(service?.whatsappMessage ?? GENERAL_WHATSAPP_MESSAGE);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-      {/* Floating Tooltip Callout */}
+    <div
+      className="fixed z-30 flex items-center gap-3 right-4 sm:right-6"
+      style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+    >
       {showTooltip && (
-        <div className="hidden md:flex items-center gap-2 bg-white text-charcoal px-3.5 py-2 rounded-2xl shadow-xl border border-sand text-xs font-medium animate-in fade-in slide-in-from-right-4 duration-300">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+        <div className="hidden md:flex items-center gap-2 bg-white text-charcoal pl-3.5 pr-1 py-1 rounded-2xl shadow-xl border border-sand text-sm font-medium">
+          <span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-600" />
           <span>Questions? Chat with us</span>
           <button
+            type="button"
             onClick={() => setShowTooltip(false)}
-            className="text-charcoal-muted hover:text-charcoal p-0.5 rounded-full ml-1"
-            aria-label="Dismiss WhatsApp Tooltip"
+            className="w-8 h-8 inline-flex items-center justify-center text-charcoal-muted hover:text-charcoal rounded-full"
+            aria-label="Dismiss chat prompt"
           >
-            <X className="w-3.5 h-3.5" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
       )}
 
-      {/* Floating WhatsApp Action Button */}
       <a
         href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:bg-[#20bd5a] hover:scale-105 active:scale-95 transition-all duration-300 pulse-soft focus:outline-none focus:ring-4 focus:ring-emerald-300"
-        aria-label="Chat directly on WhatsApp with VIA Organic"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-2xl hover:bg-emerald-800 hover:scale-105 active:scale-95 transition-all duration-300 pulse-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
+        aria-label={service ? `Chat on WhatsApp about ${service.title}` : 'Chat with VIA Organic on WhatsApp'}
       >
-        <MessageSquare className="w-7 h-7 sm:w-8 sm:h-8 fill-current text-white" />
+        <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
     </div>
   );
