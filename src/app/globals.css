@@ -76,3 +76,28 @@ body {
 .pulse-soft {
   animation: softPulse 2.8s infinite ease-in-out;
 }
+
+/* Visible keyboard focus everywhere, without showing rings on mouse clicks */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Respect the reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Lightbox: stop the page behind from scrolling */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
