@@ -8,15 +8,6 @@ export interface ServiceItem {
   whatsappMessage: string;
 }
 
-export interface PricingPackage {
-  id: string;
-  space: 'apartment' | 'villa';
-  name: string;
-  priceAed: number;
-  features: string[];
-  recommendedFor: string;
-}
-
 export interface GalleryProject {
   id: string;
   title: string;
@@ -38,6 +29,5 @@ export interface ContactFormData {
   email: string;
   community: string;
   serviceRequired: string;
-  packageInterest?: string;
   message: string;
 }

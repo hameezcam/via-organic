@@ -47,10 +47,10 @@ export default function Hero() {
               <span>Get a Free Quote</span>
             </a>
             <Link
-              href="/packages"
+              href="/gallery"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sand-light/10 hover:bg-sand-light/20 text-sand border border-sand/40 font-medium text-base backdrop-blur-md transition-colors"
             >
-              <span>Packages from AED 1,000</span>
+              <span>See Our Work</span>
               <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>

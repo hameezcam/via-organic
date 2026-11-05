@@ -18,7 +18,7 @@ export default function Contact() {
     fullName: '',
     phone: '',
     community: '',
-    serviceRequired: 'Villa Garden Package',
+    serviceRequired: 'Garden Design & Landscaping',
     message: '',
   });
 
@@ -116,7 +116,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="serviceRequired" className="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">
-                    Service or Package
+                    Service
                   </label>
                   <select
                     id="serviceRequired"
@@ -124,8 +124,6 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-sand-light/50 border border-sand focus:border-forest focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 text-sm transition-all"
                   >
-                    <option value="Villa Garden Package">Villa garden package (AED 1,000 – 3,800)</option>
-                    <option value="Apartment Balcony Package">Apartment balcony package (AED 1,200 – 3,400)</option>
                     <option value="Garden Design & Landscaping">Garden design & landscaping</option>
                     <option value="Organic Vegetable & Kitchen Garden">Organic vegetable & kitchen garden</option>
                     <option value="Drip Irrigation">Drip irrigation</option>
