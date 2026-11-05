@@ -50,6 +50,10 @@ export const FARM_PHOTOS = [
   { src: '/images/farm-mango.jpg', alt: 'A ripening mango on the tree' },
 ];
 
+export function getService(id: string) {
+  return SERVICES_DATA.find((service) => service.id === id);
+}
+
 export function buildWhatsAppLink(message: string): string {
   const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '');
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
@@ -70,6 +74,23 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Organic soil preparation and ongoing maintenance',
     ],
     whatsappMessage: 'Hello VIA Organic, I would like to enquire about landscaping for my property.',
+    overview: [
+      'We design and build gardens for villas, townhouses and apartments across the UAE, from a small balcony to a full villa plot.',
+      'Every garden starts with the soil. We prepare beds with organic compost and natural fertilisers so plants establish quickly and cope with the summer heat, then set up drip irrigation that puts water at the roots.',
+      'Once your garden is in, our team can keep looking after it with regular maintenance visits.',
+    ],
+    audience: ['Villa and townhouse owners', 'Apartment balconies and terraces', 'Courtyards, side returns and pool areas'],
+    process: [
+      { title: 'Site visit', text: 'We look at your space, sunlight, soil and water supply, and talk through how you want to use the garden.' },
+      { title: 'Design and quote', text: 'You get a layout and a clear itemised quote before any work starts.' },
+      { title: 'Build and plant', text: 'Our team prepares the soil, lays turf and paths, installs irrigation and plants everything.' },
+      { title: 'Ongoing care', text: 'Optional maintenance visits keep the garden healthy through every season.' },
+    ],
+    photos: [
+      { src: '/images/project-dubai-hills.jpg', alt: 'Villa lawn with hedged borders in Dubai Hills Estate' },
+      { src: '/images/project-jumeirah.jpg', alt: 'Palms and layered planting along a villa wall in Jumeirah' },
+      { src: '/images/entrance-pathway.jpg', alt: 'Villa entrance with paved steps, turf and garden lighting' },
+    ],
   },
   {
     id: 'commercial-farms',
@@ -85,6 +106,23 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Planting, harvesting and post-harvest handling',
     ],
     whatsappMessage: 'Hello VIA Organic, I would like to discuss organic commercial farming.',
+    overview: [
+      'VIA Organic is part of VIA Group, which has farmed organically in Sri Lanka since 2015 across 1,750 acres of mixed crops and orchards.',
+      'We bring that experience to commercial farms: planning what to grow and where, building healthy soil with natural fertilisers, and managing pests without synthetic chemicals.',
+      'Whether you are starting a new farm or converting an existing one to organic methods, we can plan it with you and help run it.',
+    ],
+    audience: ['Landowners starting a new farm', 'Farms converting to organic methods', 'Investors planning agricultural projects'],
+    process: [
+      { title: 'Land assessment', text: 'We study the land, soil, water and climate to see what will grow well.' },
+      { title: 'Farm plan', text: 'Crop selection, layout, irrigation and a planting calendar, put together with you.' },
+      { title: 'Setup and planting', text: 'We prepare the soil organically and get the first crops in the ground.' },
+      { title: 'Harvest', text: 'We guide harvesting and post-harvest handling so produce reaches market in good condition.' },
+    ],
+    photos: [
+      { src: '/images/farm-mango-trees.jpg', alt: 'Mango trees on a VIA Group organic orchard' },
+      { src: '/images/farm-mango-harvest.jpg', alt: 'Bagged mangoes ready for harvest' },
+      { src: '/images/farm-field.jpg', alt: 'Organic vegetable field on a VIA Group farm' },
+    ],
   },
   {
     id: 'advanced-agriculture',
@@ -100,6 +138,23 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Vertical growing systems',
     ],
     whatsappMessage: 'Hello VIA Organic, I would like to know more about your advanced agriculture systems.',
+    overview: [
+      'Controlled-environment growing makes it possible to farm all year in the UAE climate, using far less land and water than open fields.',
+      'We set up greenhouse, hydroponic, aeroponic, aquaponic and vertical growing systems, matched to what you want to grow and the space you have.',
+      'The same organic principles we use in the field carry through: clean inputs and no synthetic pesticides.',
+    ],
+    audience: ['Commercial growers', 'Hotels, restaurants and businesses growing their own produce', 'Homes and schools with limited space'],
+    process: [
+      { title: 'Consultation', text: 'We talk through your goals, budget, space and the crops you want to grow.' },
+      { title: 'System design', text: 'We recommend the right system, whether greenhouse, hydroponic, aeroponic, aquaponic or vertical.' },
+      { title: 'Installation', text: 'Our team installs and commissions the system and plants the first crop.' },
+      { title: 'Training and support', text: 'We show your team how to run it and stay on hand for support.' },
+    ],
+    photos: [
+      { src: '/images/farm-strawberry.jpg', alt: 'A strawberry grown in a VIA Group vertical growing system' },
+      { src: '/images/farm-crops.jpg', alt: 'Leafy crops growing on a VIA Group farm' },
+      { src: '/images/farm-team.jpg', alt: 'VIA Group team tending crops' },
+    ],
   },
   {
     id: 'farm-management',
@@ -115,6 +170,23 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Regular reporting on crop progress',
     ],
     whatsappMessage: 'Hello VIA Organic, I would like to discuss farm management for my farm.',
+    overview: [
+      'Running a farm well takes daily attention. Our farm management service puts our experienced team in charge of the day-to-day, so you can focus on the business.',
+      'We handle crop scheduling, soil health, irrigation and nutrition, using the organic methods we use on VIA Group\'s own farms.',
+      'You get regular updates on how crops are progressing and what is coming up next.',
+    ],
+    audience: ['Farm owners who want an experienced team on the ground', 'Investors with agricultural land', 'Farms that want to move to organic methods'],
+    process: [
+      { title: 'Farm review', text: 'We walk the farm and review its crops, soil, water and current practices.' },
+      { title: 'Management plan', text: 'We agree a plan covering crops, schedules, inputs and reporting.' },
+      { title: 'Daily operations', text: 'Our team runs planting, irrigation, nutrition, pest control and harvest.' },
+      { title: 'Reporting', text: 'Regular updates on crop progress, issues and the season ahead.' },
+    ],
+    photos: [
+      { src: '/images/farm-orchard.jpg', alt: 'Rows of mango trees on a VIA Group orchard' },
+      { src: '/images/farm-field.jpg', alt: 'Organic vegetable field on a VIA Group farm' },
+      { src: '/images/farm-mango.jpg', alt: 'A ripening mango on the tree' },
+    ],
   },
   {
     id: 'fresh-vegetable-distribution',
@@ -130,6 +202,22 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Farm-to-table traceability',
     ],
     whatsappMessage: 'Hello VIA Organic, I would like to enquire about fresh vegetable supply.',
+    overview: [
+      'We supply fresh, organically grown vegetables straight from the farm, without synthetic pesticides or chemical fertilisers.',
+      'Produce is picked in season, so what reaches you is fresh and full of flavour.',
+      'Message us to ask what is available and how we can supply your home or business.',
+    ],
+    audience: ['Families who want chemical-free vegetables', 'Restaurants, cafes and hotels', 'Retailers and grocers'],
+    process: [
+      { title: 'Tell us what you need', text: 'Send us the vegetables and quantities you are looking for.' },
+      { title: 'We confirm availability', text: 'We let you know what is in season and agree the details.' },
+      { title: 'Fresh supply', text: 'Produce is picked and supplied to you fresh.' },
+    ],
+    photos: [
+      { src: '/images/farm-crops.jpg', alt: 'Organic vegetables growing on a VIA Group farm' },
+      { src: '/images/farm-field.jpg', alt: 'Organic vegetable field' },
+      { src: '/images/farm-team.jpg', alt: 'VIA Group team tending organic crops' },
+    ],
   },
 ];
 
