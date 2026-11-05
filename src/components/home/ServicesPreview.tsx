@@ -11,8 +11,8 @@ export default function ServicesPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionIntro
           eyebrow="What we do"
-          title="From balcony herbs to full villa gardens"
-          intro="One team for design, planting, irrigation and ongoing care, all done the organic way."
+          title="From villa gardens to commercial farms"
+          intro="Landscaping, farming, advanced growing systems and fresh produce, all done the organic way."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">

@@ -11,14 +11,14 @@ import {
   ExternalLink,
   CheckCircle,
 } from 'lucide-react';
-import { SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
+import { SERVICES_DATA, SITE_CONFIG, buildWhatsAppLink } from '@/data/siteData';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
     community: '',
-    serviceRequired: 'Garden Design & Landscaping',
+    serviceRequired: SERVICES_DATA[0].title,
     message: '',
   });
 
@@ -124,11 +124,9 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-sand-light/50 border border-sand focus:border-forest focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 text-sm transition-all"
                   >
-                    <option value="Garden Design & Landscaping">Garden design & landscaping</option>
-                    <option value="Organic Vegetable & Kitchen Garden">Organic vegetable & kitchen garden</option>
-                    <option value="Drip Irrigation">Drip irrigation</option>
-                    <option value="Soil Care & Organic Nutrition">Soil care & organic nutrition</option>
-                    <option value="Annual Maintenance Contract (AMC)">Annual maintenance contract (AMC)</option>
+                    {SERVICES_DATA.map((service) => (
+                      <option key={service.id} value={service.title}>{service.title}</option>
+                    ))}
                   </select>
                 </div>
               </div>

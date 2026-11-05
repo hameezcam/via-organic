@@ -57,84 +57,79 @@ export function buildWhatsAppLink(message: string): string {
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'garden-design',
+    id: 'landscaping',
     image: '/images/project-aldar-abu-dhabi.jpg',
-    title: 'Garden Design & Landscaping',
+    title: 'Landscaping',
     shortDesc:
-      'Architectural landscape concepts balancing serene stone, shade pergolas, and climate-resilient organic greenery.',
-    iconName: 'Compass',
+      'Garden design, planting and hardscape for villas and apartments across the UAE, grown on organic soil care.',
+    iconName: 'Trees',
     features: [
-      '3D concept renders & spatial masterplanning',
-      'Hardscape integration (pergolas, paving & natural stone)',
-      'Native & drought-hardy luxury plant palettes',
-      'Ambient nocturnal architectural garden lighting',
+      'Garden design for villas, courtyards and balconies',
+      'Turf, planting, paving and stepping stone paths',
+      'Drip irrigation sized to your garden',
+      'Organic soil preparation and ongoing maintenance',
     ],
-    whatsappMessage:
-      'Hello VIA Organic, I would like to book a consultation for Bespoke Garden Design for my property in Dubai.',
+    whatsappMessage: 'Hello VIA Organic, I would like to enquire about landscaping for my property.',
   },
   {
-    id: 'organic-vegetables',
-    image: '/images/farm-crops.jpg',
-    title: 'Organic Vegetable & Kitchen Gardens',
+    id: 'commercial-farms',
+    image: '/images/farm-orchard.jpg',
+    title: 'Commercial Farms',
     shortDesc:
-      'Bountiful farm-to-table raised beds and edible havens yielding fresh, non-toxic heirloom herbs and seasonal produce.',
-    iconName: 'Carrot',
+      'Organic commercial farming built on the experience of running 1,750 acres of mixed crops for VIA Group since 2015.',
+    iconName: 'Tractor',
     features: [
-      'Handcrafted natural timber & masonry raised beds',
-      'Non-GMO heirloom seeds chosen with you',
-      'Micro-climate shade canopies for UAE summers',
-      'Companion planting for chemical-free pest deterrence',
+      'Organic mixed-crop and orchard farming',
+      'Farm layout and crop planning',
+      'Natural fertilisers and chemical-free pest control',
+      'Planting, harvesting and post-harvest handling',
     ],
-    whatsappMessage:
-      'Hello VIA Organic, I would like to enquire about installing an Organic Vegetable & Kitchen Garden at my villa.',
+    whatsappMessage: 'Hello VIA Organic, I would like to discuss organic commercial farming.',
   },
   {
-    id: 'smart-irrigation',
-    image: '/images/project-residential-pergola.jpg',
-    title: 'Drip Irrigation',
+    id: 'advanced-agriculture',
+    image: '/images/farm-strawberry.jpg',
+    title: 'Advanced Agriculture',
     shortDesc:
-      'Intelligent subsurface drip and automated hydrologic networks designed to put water where the roots need it.',
-    iconName: 'Droplets',
-    features: [
-      'Weather-adaptive smart Wi-Fi controllers',
-      'High-efficiency subsurface root-zone drip lines',
-      'Zero-runoff misting & deep-root soaking systems',
-      'Comprehensive pressure regulation & flow sensors',
-    ],
-    whatsappMessage:
-      'Hello VIA Organic, I would like a site survey for an upgrade to a Smart Water & Drip Irrigation system.',
-  },
-  {
-    id: 'soil-care',
-    image: '/images/farm-field.jpg',
-    title: 'Soil Care & Organic Nutrition',
-    shortDesc:
-      'Transforming arid desert sands into nutrient-dense, microbially active living earth with zero synthetic chemicals.',
+      'Controlled-environment growing that produces more food from less land and water, suited to the UAE climate.',
     iconName: 'Sprout',
     features: [
-      'Custom organic compost & bio-char soil blending',
-      'Beneficial mycorrhizal fungi & biological inoculants',
-      'Natural seaweed, kelp, and amino-acid nourishment',
-      'Salinity management & moisture-retention biology',
+      'Greenhouse farming',
+      'Hydroponic and aeroponic systems',
+      'Aquaponics',
+      'Vertical growing systems',
     ],
-    whatsappMessage:
-      'Hello VIA Organic, I need an assessment for Soil Care & Organic Nutrition for my garden.',
+    whatsappMessage: 'Hello VIA Organic, I would like to know more about your advanced agriculture systems.',
   },
   {
-    id: 'estate-maintenance',
-    image: '/images/project-dubai-hills.jpg',
-    title: 'Garden Maintenance (AMC)',
+    id: 'farm-management',
+    image: '/images/farm-team.jpg',
+    title: 'Farm Management',
     shortDesc:
-      'Regular visits from our organic farm consultants to keep your garden healthy year-round.',
-    iconName: 'ShieldCheck',
+      'Our team runs the day-to-day of your farm, from planting schedules to soil health and harvest.',
+    iconName: 'ClipboardList',
     features: [
-      'Weekly or bi-weekly dedicated horticulture visits',
-      'Precision organic fertilization & foliar spraying',
-      'Water management audit & drip line sanitization',
-      'Seasonal crop rotation & aesthetic pruning',
+      'Day-to-day farm operations by our own team',
+      'Crop scheduling and rotation',
+      'Soil health, irrigation and nutrition programmes',
+      'Regular reporting on crop progress',
     ],
-    whatsappMessage:
-      'Hello VIA Organic, please share quotation details for your garden maintenance (AMC) plans.',
+    whatsappMessage: 'Hello VIA Organic, I would like to discuss farm management for my farm.',
+  },
+  {
+    id: 'fresh-vegetable-distribution',
+    image: '/images/farm-crops.jpg',
+    title: 'Fresh Vegetable Distribution',
+    shortDesc:
+      'Fresh, organically grown vegetables supplied straight from the farm.',
+    iconName: 'Truck',
+    features: [
+      'Organically grown, chemical-free produce',
+      'Seasonal vegetables picked fresh',
+      'Supply for homes and businesses',
+      'Farm-to-table traceability',
+    ],
+    whatsappMessage: 'Hello VIA Organic, I would like to enquire about fresh vegetable supply.',
   },
 ];
 
