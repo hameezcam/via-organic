@@ -113,7 +113,7 @@ export default function Header() {
                 VIA ORGANIC
               </span>
               <span className="text-xs uppercase tracking-widest text-charcoal-muted -mt-1 font-medium">
-                Organic Agriculture UAE
+                Organic Agriculture LLC
               </span>
             </div>
           </Link>
