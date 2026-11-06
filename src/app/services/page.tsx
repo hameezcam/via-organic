@@ -35,7 +35,7 @@ export default function ServicesPage() {
             id={service.id}
             className="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
           >
-            <div className={`relative h-72 sm:h-[420px] rounded-3xl overflow-hidden shadow-xl ${idx % 2 ? 'lg:order-last' : ''}`}>
+            <div data-reveal className={`relative h-72 sm:h-[420px] rounded-3xl overflow-hidden shadow-xl ${idx % 2 ? 'lg:order-last' : ''}`}>
               <Image
                 src={service.image}
                 alt={service.imageAlt}
@@ -44,7 +44,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
             </div>
-            <div>
+            <div data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties}>
               <p className="font-serif text-5xl font-bold text-sage mb-2" aria-hidden="true">0{idx + 1}</p>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-4">{service.title}</h2>
               <p className="text-lg text-charcoal-muted leading-relaxed mb-6">{service.shortDesc}</p>
@@ -59,16 +59,16 @@ export default function ServicesPage() {
               <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href={`/services/${service.id}`}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-forest hover:bg-forest-light text-sand-light font-semibold transition-colors"
+                className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-forest hover:bg-forest-light text-sand-light font-semibold"
               >
                 View {service.title.toLowerCase()} details
-                <ArrowRight className="w-4 h-4 text-gold" aria-hidden="true" />
+                <ArrowRight className="arrow-motion w-4 h-4 text-gold" aria-hidden="true" />
               </Link>
               <a
                 href={buildWhatsAppLink(service.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-sand/40 font-semibold transition-colors"
+                className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-sand/40 font-semibold"
               >
                 <WhatsAppIcon className="w-4 h-4" />
                 {service.ctaLabel}

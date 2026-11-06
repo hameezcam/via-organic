@@ -55,14 +55,14 @@ export default async function ServiceDetailPage({ params }: Props) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-lg transition-colors"
+            className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-lg"
           >
             <WhatsAppIcon className="w-5 h-5" />
             {service.ctaLabel}
           </a>
           <a
             href={SITE_CONFIG.phoneHref}
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-sand/40 text-sand hover:bg-sand-light/10 font-medium transition-colors"
+            className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-sand/40 text-sand hover:bg-sand-light/10 font-medium"
           >
             Call {SITE_CONFIG.phone}
           </a>
@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Introduction + what's included */}
       <section className="py-10 sm:py-14" aria-labelledby="overview-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
-          <div className="lg:col-span-3">
+          <div data-reveal className="lg:col-span-3">
             <h2 id="overview-heading" className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-6">
               Overview
             </h2>
@@ -111,7 +111,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="lg:col-span-2">
             <div className="rounded-3xl bg-forest text-sand-light p-8 lg:sticky lg:top-28">
               <h2 id="included-heading" className="font-serif text-2xl font-bold text-white mb-5">
                 What&apos;s included
@@ -128,7 +128,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold transition-colors"
+                className="btn-motion w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 {service.ctaLabel}
@@ -142,10 +142,10 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Benefits */}
       <section className="pb-16 sm:pb-20" aria-labelledby="benefits-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="benefits-heading" className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-8">
+          <h2 data-reveal id="benefits-heading" className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-8">
             Why choose VIA Organic
           </h2>
-          <ul className={`grid grid-cols-1 sm:grid-cols-2 ${service.benefits.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
+          <ul data-reveal-group className={`grid grid-cols-1 sm:grid-cols-2 ${service.benefits.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
             {service.benefits.map((benefit) => (
               <li key={benefit.title} className="rounded-3xl border border-sand bg-white p-7">
                 <Check className="w-6 h-6 text-emerald-700 mb-3" aria-hidden="true" />
@@ -160,10 +160,10 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Process */}
       <section className="py-16 sm:py-20 bg-sand-light/60" aria-labelledby="process-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="process-heading" className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-10">
+          <h2 data-reveal id="process-heading" className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-10">
             How it works
           </h2>
-          <ol className={`grid grid-cols-1 sm:grid-cols-2 ${service.process.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
+          <ol data-reveal-group className={`grid grid-cols-1 sm:grid-cols-2 ${service.process.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
             {service.process.map((step, idx) => (
               <li key={step.title} className="rounded-3xl bg-white border border-sand p-7">
                 <p className="font-serif text-4xl font-bold text-sage mb-3" aria-hidden="true">0{idx + 1}</p>
@@ -182,10 +182,10 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="py-16 sm:py-20" aria-labelledby="photos-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="photos-heading" className="sr-only">Photos</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <ul data-reveal-group className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {service.photos.map((photo) => (
-              <li key={photo.src} className="relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-sm bg-sand">
-                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+              <li key={photo.src} className="group relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-sm bg-sand">
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-[scale] duration-700 ease-organic group-hover:scale-[1.04] motion-reduce:group-hover:scale-100" />
               </li>
             ))}
           </ul>
@@ -199,14 +199,14 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="pb-4" aria-labelledby="related-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-            <h2 id="related-heading" className="font-serif text-2xl sm:text-3xl font-bold text-forest">
+            <h2 data-reveal id="related-heading" className="font-serif text-2xl sm:text-3xl font-bold text-forest">
               Related services
             </h2>
             <Link href="/services" className="inline-flex items-center gap-1.5 py-2 text-sm font-semibold text-forest hover:text-forest-light">
-              All services <ArrowRight className="w-4 h-4 text-gold" aria-hidden="true" />
+              All services <ArrowRight className="arrow-motion w-4 h-4 text-gold" aria-hidden="true" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div data-reveal-group className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {related.map((other) => (
               <ServiceCard key={other.id} service={other} size="compact" sizes="(max-width: 640px) 100vw, 33vw" />
             ))}

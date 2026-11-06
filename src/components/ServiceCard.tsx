@@ -22,15 +22,17 @@ export default function ServiceCard({ service, headingLevel = 'h3', size = 'defa
   const height = size === 'large' ? 'min-h-[22rem]' : size === 'compact' ? 'min-h-[13rem]' : 'min-h-[17rem]';
 
   return (
+    // The outer div is what scroll reveals move; the card itself lifts on hover.
+    <div className="h-full">
     <article
-      className={`group relative flex flex-col justify-end ${height} rounded-3xl overflow-hidden bg-forest-dark shadow-sm hover:shadow-xl focus-within:ring-4 focus-within:ring-gold/70 transition-shadow`}
+      className={`group relative flex flex-col justify-end h-full ${height} rounded-3xl overflow-hidden bg-forest-dark shadow-sm ring-1 ring-transparent transition-[translate,box-shadow] duration-300 ease-organic hover:-translate-y-[5px] hover:shadow-[0_24px_44px_-18px_rgb(16_36_21/0.55)] hover:ring-gold/40 focus-within:-translate-y-[5px] focus-within:ring-4 focus-within:ring-gold/70 motion-reduce:hover:translate-y-0 motion-reduce:focus-within:translate-y-0`}
     >
       <Image
         src={service.image}
         alt=""
         fill
         sizes={sizes ?? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
-        className="object-cover group-hover:scale-105 transition-transform duration-700 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+        className="object-cover transition-[scale] duration-500 ease-organic group-hover:scale-[1.04] group-focus-within:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-within:scale-100"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-dark/55 to-forest-dark/5" />
       <div className="relative p-6 text-white">
@@ -49,11 +51,12 @@ export default function ServiceCard({ service, headingLevel = 'h3', size = 'defa
         )}
         <span
           aria-hidden="true"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold group-hover:gap-2.5 transition-all"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold"
         >
-          Learn more <ArrowRight className="w-4 h-4" />
+          Learn more <ArrowRight className="arrow-motion w-4 h-4" />
         </span>
       </div>
     </article>
+    </div>
   );
 }
