@@ -40,6 +40,34 @@ Canonical URLs, the sitemap, robots.txt, Open Graph tags and structured data all
 
 When a custom domain is confirmed, set it in one of the first two places and redeploy.
 
+## Motion system
+
+Animations are CSS-first, with no animation library. The only JavaScript is one shared `IntersectionObserver` (`src/components/motion/RevealObserver.tsx`) and a small count-up component.
+
+| Token (in `globals.css`) | Value | Used for |
+|---|---|---|
+| `--ease-organic` (`ease-organic` utility) | `cubic-bezier(0.22, 1, 0.36, 1)` | Every transition |
+| `--motion-fast` | 280ms | Hovers, presses, focus |
+| `--motion-menu` | 320ms | Dropdowns, menus, accordions, lightbox |
+| `--motion-reveal` | 700ms | Scroll reveals |
+| `--motion-hero` | 850ms | Hero entrance |
+| `--motion-distance` | 24px | How far revealed content rises |
+| `--motion-stagger` | 120ms | Delay between items in a group |
+
+How to use it:
+
+- `data-reveal` on an element fades it up once when it scrolls into view. `data-reveal-group` does the same for each direct child, staggered.
+- `.hero-rise` with `--hero-delay` / `--hero-duration` is the hero entrance. It is pure CSS, so it starts on first paint.
+- `.btn-motion`, `.arrow-motion` and `.field-motion` give buttons, arrows and form fields consistent hover, press and focus motion. `.collapse-motion` animates accordions and submenus to their natural height.
+- Only `opacity` and `transform`/`translate`/`scale` are animated (plus the accordion's `grid-template-rows`). No layout-shifting properties are used.
+
+Safety rules built in:
+
+- Content is visible by default. A script in `<head>` only enables hiding of unrevealed content when `IntersectionObserver` exists, and switches it off again if the reveal script has not started within 3.5 seconds.
+- `prefers-reduced-motion: reduce` removes all reveals, entrance animations and transitions, and the acreage figure shows its final value immediately.
+- Closed menus and FAQ answers are `inert`, so they never receive keyboard focus.
+- The acreage count keeps the real figure in the page text. Only a decorative overlay counts up, and it is hidden from assistive technology.
+
 ## SEO and structured data
 
 - Per-page titles, descriptions, canonicals and social cards: `pageMetadata()` in [`src/lib/seo.ts`](src/lib/seo.ts)
