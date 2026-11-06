@@ -16,7 +16,8 @@ import type {
  * project's Vercel production URL is used, which Vercel updates automatically
  * when a custom domain is connected.
  */
-const CONFIRMED_SITE_URL: string | null = null;
+// www.viaorganic.ae is the primary domain in Vercel; viaorganic.ae redirects to it.
+const CONFIRMED_SITE_URL: string | null = 'https://www.viaorganic.ae';
 
 function resolveSiteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL || CONFIRMED_SITE_URL;
