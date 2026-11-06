@@ -24,7 +24,7 @@ const GENERAL_OPTION = 'General enquiry / not sure yet';
 const FIELD_ORDER: (keyof EnquiryInput)[] = ['fullName', 'phone', 'service', 'location', 'message'];
 
 const inputClass =
-  'w-full px-4 py-3 rounded-xl bg-sand-light/50 border text-base focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/30 transition-colors';
+  'field-motion w-full px-4 py-3 rounded-xl bg-sand-light/50 border text-base hover:border-sand-dark focus:bg-white focus:outline-none focus:ring-2 focus:ring-forest/30';
 
 const noopSubscribe = () => () => {};
 
@@ -76,7 +76,7 @@ export default function Contact() {
 
   const errorText = (field: keyof EnquiryInput) =>
     errors[field] ? (
-      <p id={`${field}-error`} className="mt-1.5 flex items-center gap-1.5 text-sm text-red-700">
+      <p id={`${field}-error`} className="fade-in mt-1.5 flex items-center gap-1.5 text-sm text-red-700">
         <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
         {errors[field]}
       </p>
@@ -90,7 +90,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Enquiry form that opens WhatsApp */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-sand/80 shadow-xl">
+          <div data-reveal className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-sand/80 shadow-xl">
             <div className="flex items-start gap-3 mb-6 pb-4 border-b border-sand/60">
               <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0" aria-hidden="true">
                 <WhatsAppIcon className="w-5 h-5" />
@@ -109,7 +109,7 @@ export default function Contact() {
               </p>
 
               {errorCount > 0 && (
-                <div role="alert" className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">
+                <div role="alert" className="fade-in p-3 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">
                   Please check the {errorCount === 1 ? 'highlighted field' : `${errorCount} highlighted fields`} below.
                 </div>
               )}
@@ -195,7 +195,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={!ready}
-                className="disabled:opacity-60 disabled:cursor-wait w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base shadow-lg active:scale-[0.98] transition-all cursor-pointer"
+                className="btn-motion disabled:opacity-60 disabled:cursor-wait w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base shadow-lg cursor-pointer"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 <span>Continue to WhatsApp</span>
@@ -203,7 +203,7 @@ export default function Contact() {
 
               <div aria-live="polite">
                 {sentLink && (
-                  <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm flex items-start gap-2">
+                  <div className="fade-in p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-emerald-700 shrink-0" aria-hidden="true" />
                     <span>
                       WhatsApp should now be open with your message. Review it and press send. If nothing opened,{' '}
@@ -223,7 +223,7 @@ export default function Contact() {
           </div>
 
           {/* Contact details, visits and map */}
-          <div className="lg:col-span-5 space-y-6">
+          <div data-reveal-group className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-sand/80 shadow-md space-y-6">
               <h2 className="font-serif text-2xl font-bold text-forest">Contact details</h2>
 
