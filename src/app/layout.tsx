@@ -6,6 +6,7 @@ import { jsonLd, siteStructuredData } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import RevealObserver, { REVEAL_BOOTSTRAP } from "@/components/motion/RevealObserver";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -69,9 +70,11 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
+      suppressHydrationWarning
       className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_BOOTSTRAP }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLd(siteStructuredData())}
@@ -93,6 +96,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <FloatingWhatsApp />
+        <RevealObserver />
       </body>
     </html>
   );
