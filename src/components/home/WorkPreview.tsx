@@ -19,18 +19,18 @@ export default function WorkPreview() {
           intro="A selection of villa gardens our team has planted in Dubai and Abu Dhabi."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:h-[620px]">
+        <div data-reveal-group className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:h-[620px]">
           {projects.map((project, idx) => (
             <figure
               key={project.id}
-              className={`relative h-64 lg:h-auto rounded-3xl overflow-hidden bg-forest-dark ${LAYOUT[idx]}`}
+              className={`group relative h-64 lg:h-auto rounded-3xl overflow-hidden bg-forest-dark ${LAYOUT[idx]}`}
             >
               <Image
                 src={project.image}
                 alt={project.alt}
                 fill
                 sizes={idx === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 640px) 100vw, 25vw'}
-                className="object-cover"
+                className="object-cover transition-[scale] duration-700 ease-organic group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
               />
               <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-forest-dark/90 to-transparent text-white">
                 <span className="block font-serif text-xl font-bold">{project.title}</span>
@@ -42,12 +42,12 @@ export default function WorkPreview() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div data-reveal className="mt-10 text-center">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-sand-light font-semibold transition-colors"
+            className="btn-motion inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-sand-light font-semibold"
           >
-            See the full gallery <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            See the full gallery <ArrowRight className="arrow-motion w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

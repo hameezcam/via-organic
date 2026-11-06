@@ -17,7 +17,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="px-6 py-3 rounded-full bg-forest text-sand-light font-semibold hover:bg-forest-light transition-colors"
+        className="btn-motion px-6 py-3 rounded-full bg-forest text-sand-light font-semibold hover:bg-forest-light"
       >
         Back to VIA Organic
       </Link>

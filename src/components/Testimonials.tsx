@@ -11,7 +11,7 @@ export default function Testimonials() {
     <section className="py-20 sm:py-24" aria-labelledby="reviews-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionIntro id="reviews-heading" eyebrow="Customer reviews" title="What our customers say" />
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul data-reveal-group className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TESTIMONIALS.map((review) => (
             <li key={`${review.name}-${review.quote.slice(0, 20)}`} className="rounded-3xl bg-white border border-sand p-8">
               <figure>

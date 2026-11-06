@@ -20,7 +20,20 @@ export default function Gallery() {
     lastTrigger.current = index;
     setActiveIndex(index);
   };
-  const close = useCallback(() => dialogRef.current?.close(), []);
+  // Play the exit animation, then close. Skipped for reduced motion.
+  const close = useCallback(() => {
+    const dialog = dialogRef.current;
+    if (!dialog?.open || dialog.hasAttribute('data-closing')) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      dialog.close();
+      return;
+    }
+    dialog.setAttribute('data-closing', '');
+    window.setTimeout(() => {
+      dialog.removeAttribute('data-closing');
+      dialog.close();
+    }, 220);
+  }, []);
   const step = useCallback(
     (delta: number) => setActiveIndex((idx) => (idx === null ? idx : (idx + delta + count) % count)),
     [count]
@@ -60,17 +73,17 @@ export default function Gallery() {
         </h2>
 
         {/* Masonry columns keep each photo's natural shape */}
-        <ul className="columns-1 sm:columns-2 lg:columns-3 gap-6 mb-16 [&>li]:mb-6">
+        <ul data-reveal-group className="columns-1 sm:columns-2 lg:columns-3 gap-6 mb-16 [&>li]:mb-6">
           {GALLERY_PROJECTS.map((project, idx) => (
             <li key={project.id} className="break-inside-avoid">
-              <figure className="group rounded-3xl overflow-hidden border border-sand/80 bg-white shadow-xs hover:shadow-xl transition-shadow">
+              <figure className="group rounded-3xl overflow-hidden border border-sand/80 bg-white shadow-xs transition-[translate,box-shadow,border-color] duration-300 ease-organic hover:-translate-y-1 hover:shadow-[0_24px_44px_-20px_rgb(16_36_21/0.45)] hover:border-sand-dark focus-within:-translate-y-1 motion-reduce:hover:translate-y-0 motion-reduce:focus-within:translate-y-0">
                 <button
                   type="button"
                   ref={(el) => {
                     triggerRefs.current[idx] = el;
                   }}
                   onClick={() => open(idx)}
-                  className="relative block w-full cursor-zoom-in focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-gold"
+                  className="relative block w-full overflow-hidden cursor-zoom-in focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-gold"
                   aria-label={`View larger photo: ${project.title}, ${project.location}`}
                   aria-haspopup="dialog"
                 >
@@ -80,11 +93,22 @@ export default function Gallery() {
                     width={project.width}
                     height={project.height}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="w-full h-auto group-hover:scale-[1.03] transition-transform duration-700 ease-out motion-reduce:transition-none"
+                    className="w-full h-auto transition-[scale] duration-500 ease-organic group-hover:scale-[1.04] group-focus-within:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-within:scale-100"
+                  />
+                  {/* Hover overlay: a soft shade and a "view larger" cue. On touch screens only the icon shows. */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-forest-dark/55 via-forest-dark/0 to-transparent opacity-0 transition-opacity duration-300 ease-organic group-hover:opacity-100 group-focus-within:opacity-100"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute top-3 right-3 w-10 h-10 rounded-full bg-forest-dark/75 text-sand-light flex items-center justify-center opacity-90 group-hover:opacity-100"
+                    className="absolute left-4 bottom-4 inline-flex items-center gap-2 text-sm font-semibold text-white opacity-0 translate-y-2 transition-[opacity,translate] duration-300 ease-organic group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0"
+                  >
+                    View larger
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-3 right-3 w-10 h-10 rounded-full bg-forest-dark/75 text-sand-light flex items-center justify-center transition-[background-color,scale] duration-300 ease-organic group-hover:bg-forest group-hover:scale-110"
                   >
                     <Expand className="w-4 h-4" />
                   </span>
@@ -103,7 +127,7 @@ export default function Gallery() {
         </ul>
 
         {/* Instagram */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-forest text-sand-light text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+        <div data-reveal className="p-8 sm:p-10 rounded-3xl bg-forest text-sand-light text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
           <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-forest-light/40 blur-2xl pointer-events-none" />
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="text-center sm:text-left">
@@ -121,7 +145,7 @@ export default function Gallery() {
               href={SITE_CONFIG.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-sand hover:bg-sand-dark text-forest-dark font-semibold text-sm shadow-md transition-colors shrink-0"
+              className="btn-motion inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-sand hover:bg-sand-dark text-forest-dark font-semibold text-sm shadow-md shrink-0"
             >
               <InstagramIcon className="w-4 h-4" />
               <span>Visit {SITE_CONFIG.instagramHandle}</span>
@@ -135,12 +159,17 @@ export default function Gallery() {
       <dialog
         ref={dialogRef}
         onClose={handleClose}
+        onCancel={(e) => {
+          // Escape: run the same animated close as the close button.
+          e.preventDefault();
+          close();
+        }}
         onKeyDown={handleKeyDown}
         onClick={(e) => {
           if (e.target === e.currentTarget) close();
         }}
         aria-labelledby="lightbox-title"
-        className="m-auto w-[min(100vw-1rem,72rem)] max-h-[calc(100dvh-1rem)] p-0 rounded-2xl bg-forest-dark text-sand-light backdrop:bg-black/80 overflow-hidden"
+        className="lightbox m-auto w-[min(100vw-1rem,72rem)] max-h-[calc(100dvh-1rem)] p-0 rounded-2xl bg-forest-dark text-sand-light backdrop:bg-black/80 overflow-hidden"
       >
         {active && activeIndex !== null && (
           <div className="flex flex-col max-h-[calc(100dvh-1rem)]">
@@ -152,7 +181,7 @@ export default function Gallery() {
                 width={active.width}
                 height={active.height}
                 sizes="(max-width: 1200px) 100vw, 1150px"
-                className="w-auto h-auto max-w-full max-h-[calc(100dvh-13rem)] sm:max-h-[calc(100dvh-10rem)] object-contain"
+                className="fade-in w-auto h-auto max-w-full max-h-[calc(100dvh-13rem)] sm:max-h-[calc(100dvh-10rem)] object-contain"
               />
               <button
                 type="button"
@@ -195,7 +224,7 @@ export default function Gallery() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition-colors shrink-0"
+                className="btn-motion inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold shrink-0"
               >
                 <WhatsAppIcon className="w-4 h-4" />
                 Ask about a garden like this

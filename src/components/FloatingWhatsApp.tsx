@@ -21,7 +21,7 @@ export default function FloatingWhatsApp() {
       style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
     >
       {showTooltip && (
-        <div className="hidden md:flex items-center gap-2 bg-white text-charcoal pl-3.5 pr-1 py-1 rounded-2xl shadow-xl border border-sand text-sm font-medium">
+        <div style={{ '--hero-delay': '1200ms', '--hero-duration': '600ms' } as React.CSSProperties} className="hero-rise hidden md:flex items-center gap-2 bg-white text-charcoal pl-3.5 pr-1 py-1 rounded-2xl shadow-xl border border-sand text-sm font-medium">
           <span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-600" />
           <span>Questions? Chat with us</span>
           <button
@@ -39,7 +39,7 @@ export default function FloatingWhatsApp() {
         href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-2xl hover:bg-emerald-800 hover:scale-105 active:scale-95 transition-all duration-300 pulse-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-[0_14px_30px_-10px_rgb(4_120_87/0.6)] transition-[background-color,translate,box-shadow,scale] duration-300 ease-organic hover:bg-emerald-800 hover:-translate-y-1 hover:shadow-[0_20px_36px_-12px_rgb(4_120_87/0.7)] active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
         aria-label={service ? `Chat on WhatsApp about ${service.title}` : 'Chat with VIA Organic on WhatsApp'}
       >
         <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8" />

@@ -23,7 +23,7 @@ export default function ServicesPreview() {
             <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-forest-light mb-4">
               <Home className="w-4 h-4" aria-hidden="true" /> For homes and villas
             </p>
-            <div className="grid grow">
+            <div data-reveal-group className="grid grow">
               {homeServices.map((service) => (
                 <ServiceCard key={service.id} service={service} size="large" sizes="(max-width: 1024px) 100vw, 33vw" />
               ))}
@@ -34,7 +34,7 @@ export default function ServicesPreview() {
             <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-forest-light mb-4">
               <Tractor className="w-4 h-4" aria-hidden="true" /> For farms, growers and businesses
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 grow">
+            <div data-reveal-group className="grid grid-cols-1 sm:grid-cols-2 gap-5 grow">
               {farmServices.map((service) => (
                 <ServiceCard key={service.id} service={service} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               ))}

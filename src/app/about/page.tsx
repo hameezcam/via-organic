@@ -6,6 +6,7 @@ import PageHero from '@/components/PageHero';
 import SectionIntro from '@/components/SectionIntro';
 import CtaBand from '@/components/CtaBand';
 import Testimonials from '@/components/Testimonials';
+import CountUp from '@/components/motion/CountUp';
 import { FARM_PHOTOS, FOUNDER } from '@/data/siteData';
 import { pageMetadata } from '@/lib/seo';
 
@@ -36,7 +37,7 @@ export default function AboutPage() {
 
       <section className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <div data-reveal>
             <SectionIntro eyebrow="Our story" title="From Sri Lankan farms to UAE homes" align="left" />
             <div className="space-y-5 text-lg text-charcoal-muted leading-relaxed">
               <p>
@@ -47,7 +48,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative h-80 sm:h-[480px] rounded-3xl overflow-hidden shadow-xl">
+          <div data-reveal style={{ '--reveal-delay': '150ms' } as React.CSSProperties} className="relative h-80 sm:h-[480px] rounded-3xl overflow-hidden shadow-xl">
             <Image
               src="/images/farm-mango-harvest.jpg"
               alt="Bagged mangoes ready for harvest on a VIA Group orchard"
@@ -60,11 +61,11 @@ export default function AboutPage() {
       </section>
 
       <section aria-label="Key facts" className="bg-forest text-sand-light">
-        <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <dl data-reveal-group className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
           {FACTS.map((fact) => (
             <div key={fact.label} className="flex flex-col-reverse text-center">
               <dt className="text-sand/85">{fact.label}</dt>
-              <dd className="font-serif text-4xl sm:text-5xl font-bold text-white mb-1">{fact.value}</dd>
+              <dd className="font-serif text-4xl sm:text-5xl font-bold text-white mb-1">{fact.value === '1,750' ? <CountUp value={fact.value} /> : fact.value}</dd>
             </div>
           ))}
         </dl>
@@ -77,15 +78,15 @@ export default function AboutPage() {
             title="Where our know-how comes from"
             intro="Photos from VIA Group farms and orchards in Sri Lanka."
           />
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div data-reveal-group className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {FARM_PHOTOS.map((photo) => (
-              <div key={photo.src} className="relative h-48 sm:h-72 rounded-3xl overflow-hidden">
+              <div key={photo.src} className="group relative h-48 sm:h-72 rounded-3xl overflow-hidden">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 1024px) 50vw, 33vw"
-                  className="object-cover"
+                  className="object-cover transition-[scale] duration-700 ease-organic group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
                 />
               </div>
             ))}
@@ -94,7 +95,7 @@ export default function AboutPage() {
       </section>
 
       <section className="py-20 sm:py-24 bg-sand-light/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div data-reveal-group className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="rounded-3xl bg-white border border-sand p-8">
             <Target className="w-8 h-8 text-forest mb-4" />
             <h2 className="font-serif text-2xl font-bold text-forest mb-2">Our mission</h2>
@@ -121,7 +122,7 @@ export default function AboutPage() {
 
       {FOUNDER && (
         <section className="py-20 sm:py-24" aria-labelledby="founder-heading">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-8 items-center sm:items-start">
+          <div data-reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-8 items-center sm:items-start">
             {FOUNDER.photo && (
               <div className="relative w-40 h-40 rounded-full overflow-hidden shrink-0 bg-sand">
                 <Image src={FOUNDER.photo} alt={FOUNDER.name} fill sizes="160px" className="object-cover" />

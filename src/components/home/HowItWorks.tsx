@@ -38,7 +38,7 @@ export default function HowItWorks() {
           title="Three simple steps, for gardens and farms"
           intro="The process is the same whether you are planning a villa garden or a commercial growing project."
         />
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ol data-reveal-group className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {STEPS.map((step, idx) => (
             <li key={step.title} className="flex flex-col rounded-3xl bg-white border border-sand p-7 sm:p-8">
               <div className="flex items-center gap-4 mb-5">
@@ -63,12 +63,12 @@ export default function HowItWorks() {
           ))}
         </ol>
 
-        <div className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
+        <div data-reveal className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
           <a
             href={buildWhatsAppLink(GARDEN_WHATSAPP_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-sm transition-colors"
+            className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-sm"
           >
             <WhatsAppIcon className="w-5 h-5" />
             Enquire about a garden
@@ -77,7 +77,7 @@ export default function HowItWorks() {
             href={buildWhatsAppLink(FARM_WHATSAPP_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-sand-light font-semibold transition-colors"
+            className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-sand-light font-semibold"
           >
             <WhatsAppIcon className="w-5 h-5" />
             Enquire about a farm

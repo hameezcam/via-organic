@@ -22,7 +22,7 @@ export default function CtaBand({
 }: CtaBandProps) {
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden bg-forest-dark text-sand-light shadow-xl">
+      <div data-reveal className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden bg-forest-dark text-sand-light shadow-xl">
         <Image src="/images/entrance-pathway.jpg" alt="" fill sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-dark via-forest-dark/85 to-forest-dark/40" />
         <div className="relative px-6 sm:px-12 py-14 sm:py-16 max-w-2xl">
@@ -33,17 +33,17 @@ export default function CtaBand({
               href={buildWhatsAppLink(message)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-lg transition-colors"
+              className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-lg"
             >
               <WhatsAppIcon className="w-5 h-5" />
               <span>{buttonLabel}</span>
             </a>
             <Link
               href={secondary.href}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-sand/40 text-sand hover:bg-sand-light/10 font-medium transition-colors"
+              className="btn-motion inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-sand/40 text-sand hover:bg-sand-light/10 font-medium"
             >
               <span>{secondary.label}</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <ArrowRight className="arrow-motion w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
         </div>
